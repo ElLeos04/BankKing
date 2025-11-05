@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Define color resources for the application theme -->
+    <Color x:Key="LightTouch">#E0E2DB</Color>
+    <Color x:Key="Panel">#D2D4C8</Color>
+    <Color x:Key="DarkPanel">#B8BDB5</Color>
+    <Color x:Key="LightAccent">#889696</Color>
+    <Color x:Key="DarkAccent">#2E3836</Color>
+    <Color x:Key="PositiveValue">#3F8220</Color>
+    <Color x:Key="NegativeValue">#D71B1B</Color>
+    <SolidColorBrush x:Key="LightTouchBrush" Color="{StaticResource LightTouch}"/>
+    <SolidColorBrush x:Key="PanelBrush" Color="{StaticResource Panel}"/>
+    <SolidColorBrush x:Key="DarkPanelBrush" Color="{StaticResource DarkPanel}"/>
+    <SolidColorBrush x:Key="LightAccentBrush" Color="{StaticResource LightAccent}"/>
+    <SolidColorBrush x:Key="DarkAccentBrush" Color="{StaticResource DarkAccent}"/>
+</ResourceDictionary>
