@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:BankKing"
              StartupUri="Interface/MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="/ColorTheme.xaml"/>
+        <ResourceDictionary Source="/Resources/ColorTheme.xaml"/>
     </Application.Resources>
 </Application>
