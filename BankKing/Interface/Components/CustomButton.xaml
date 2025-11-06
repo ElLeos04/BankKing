@@ -9,14 +9,13 @@
     <Border BorderThickness="2,2,2,2" CornerRadius="6,6,6,6" BorderBrush="{DynamicResource LightAccentBrush}">
         <Grid>
             <Border Name="Mask" Background="White" CornerRadius="5"/>
-            <StackPanel x:Name="stackPanel" Background="{DynamicResource LightTouchBrush}">
-                <StackPanel.OpacityMask>
+            <Button BorderBrush="{DynamicResource LightTouchBrush}" Background="{DynamicResource LightTouchBrush}" FontFamily="{DynamicResource AppFontFamily}" FontSize="14">
+                <Button.OpacityMask>
                     <VisualBrush Visual="{Binding ElementName=Mask}"/>
-                </StackPanel.OpacityMask>
-                <Button  Width="{Binding ActualWidth, ElementName=stackPanel, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=stackPanel, Mode=OneWay}" BorderBrush="#00707070" Background="#00DDDDDD" FontFamily="{DynamicResource AppFontFamily}" FontSize="14">
-                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Foreground="{DynamicResource DarkAccentBrush}">Ajouter Transaction</TextBlock>
-                </Button>
-            </StackPanel>
+                </Button.OpacityMask>
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center" Foreground="{DynamicResource DarkAccentBrush}"><Run Text="Ajouter Transaction"/></TextBlock>
+            </Button>
+            
         </Grid>
     </Border>
 </UserControl>
