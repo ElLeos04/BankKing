@@ -9,7 +9,7 @@
     <Border BorderThickness="2,2,2,2" CornerRadius="6,6,6,6" BorderBrush="{DynamicResource LightAccentBrush}">
         <Grid>
             <Border Name="Mask" Background="White" CornerRadius="5"/>
-            <StackPanel x:Name="stackPanel" Background="{DynamicResource PanelBrush}">
+            <StackPanel x:Name="stackPanel" Background="{DynamicResource LightTouchBrush}">
                 <StackPanel.OpacityMask>
                     <VisualBrush Visual="{Binding ElementName=Mask}"/>
                 </StackPanel.OpacityMask>
