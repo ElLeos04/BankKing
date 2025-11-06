@@ -13,5 +13,7 @@
     <SolidColorBrush x:Key="DarkPanelBrush" Color="{StaticResource DarkPanel}"/>
     <SolidColorBrush x:Key="LightAccentBrush" Color="{StaticResource LightAccent}"/>
     <SolidColorBrush x:Key="DarkAccentBrush" Color="{StaticResource DarkAccent}"/>
+    <SolidColorBrush x:Key="PositiveValueBrush" Color="{StaticResource PositiveValue}"/>
+    <SolidColorBrush x:Key="NegativeValueBrush" Color="{StaticResource NegativeValue}"/>
     <FontFamily x:Key="AppFontFamily">./#Inter</FontFamily>
 </ResourceDictionary>

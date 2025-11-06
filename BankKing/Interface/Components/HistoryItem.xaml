@@ -8,11 +8,11 @@
              Width="278" Height="34">
     <Border BorderThickness="2" BorderBrush="{DynamicResource LightAccentBrush}" Background="{DynamicResource PanelBrush}">
         <Grid>
-            <TextBlock HorizontalAlignment="Left" Margin="15,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" FontFamily="{DynamicResource AppFontFamily}" FontSize="14">
+            <TextBlock HorizontalAlignment="Left" Margin="15,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" FontFamily="{DynamicResource AppFontFamily}" FontSize="14" Foreground="{DynamicResource DarkAccentBrush}">
                 Category
             </TextBlock>
             <GridSplitter HorizontalAlignment="Center" Width="3" Background="{DynamicResource LightAccentBrush}"/>
-            <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,15,0" TextAlignment="Right">
+            <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,15,0" TextAlignment="Right" Foreground="{DynamicResource PositiveValueBrush}">
                 0,00 €
             </TextBlock>
         </Grid>

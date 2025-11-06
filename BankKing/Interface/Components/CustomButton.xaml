@@ -14,7 +14,7 @@
                     <VisualBrush Visual="{Binding ElementName=Mask}"/>
                 </StackPanel.OpacityMask>
                 <Button  Width="{Binding ActualWidth, ElementName=stackPanel, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=stackPanel, Mode=OneWay}" BorderBrush="#00707070" Background="#00DDDDDD" FontFamily="{DynamicResource AppFontFamily}" FontSize="14">
-                    <TextBlock TextWrapping="Wrap" TextAlignment="Center">Ajouter Transaction</TextBlock>
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Foreground="{DynamicResource DarkAccentBrush}">Ajouter Transaction</TextBlock>
                 </Button>
             </StackPanel>
         </Grid>
