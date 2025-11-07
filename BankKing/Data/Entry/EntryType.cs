@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BankKing.Data.Entry
 {
-    enum EntryType
+    public enum EntryType
     {
         None,
         Expense,

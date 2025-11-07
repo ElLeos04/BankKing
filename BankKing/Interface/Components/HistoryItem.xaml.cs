@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankKing.Data.Entry;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,24 @@ namespace BankKing.Interface.Components
         public HistoryItem()
         {
             InitializeComponent();
+        }
+
+        public static readonly DependencyProperty CategoryProperty =
+            DependencyProperty.Register("EntryCategory", typeof(EntryCategory), typeof(HistoryItem), null);
+
+        public static readonly DependencyProperty AmountProperty =
+            DependencyProperty.Register("EntryAmount", typeof(string), typeof(HistoryItem), null);
+
+        public EntryCategory EntryCategory
+        {
+            get { return (EntryCategory)GetValue(CategoryProperty); }
+            set { SetValue(CategoryProperty, value); }
+        }
+
+        public string EntryAmount
+        {
+            get { return (string)GetValue(AmountProperty); }
+            set { SetValue(AmountProperty, value); }
         }
     }
 }
