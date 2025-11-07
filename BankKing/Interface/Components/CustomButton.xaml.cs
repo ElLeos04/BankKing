@@ -22,5 +22,14 @@ namespace BankKing.Interface.Components
         {
             InitializeComponent();
         }
+
+        public static readonly DependencyProperty ButtonTextProperty =
+            DependencyProperty.Register("ButtonText", typeof(string), typeof(CustomButton), new PropertyMetadata(string.Empty));
+
+        public string ButtonText
+        {
+            get { return (string)GetValue(ButtonTextProperty); }
+            set { SetValue(ButtonTextProperty, value); }
+        }
     }
 }
