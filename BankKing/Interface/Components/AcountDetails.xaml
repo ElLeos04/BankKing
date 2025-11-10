@@ -24,9 +24,15 @@
             </Grid>
 
             <Grid x:Name="ContentPanel" Margin="0,280,0,110">
-                <Border BorderBrush="{DynamicResource LightAccentBrush}" BorderThickness="3,3,3,3" Background="{DynamicResource LightTouchBrush}" CornerRadius="6,6,6,6" Margin="10,0,10,0">
-                    <Grid>
-                        <StackPanel x:Name="HistoryPanel"/>
+                <Border BorderBrush="{DynamicResource LightAccentBrush}" BorderThickness="2" CornerRadius="8,8,8,8" Margin="10,0,10,0">
+                    <Grid x:Name="HistoryGridPanel">
+                        <Border Name="mask" Background="White" CornerRadius="8"/>
+
+                        <StackPanel x:Name="HistoryPanel" Background="{DynamicResource LightTouchBrush}" Height="{Binding ActualHeight, ElementName=HistoryGridPanel, Mode=OneWay}">
+                            <StackPanel.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=mask}"/>
+                            </StackPanel.OpacityMask>
+                        </StackPanel>
                     </Grid>
 
                 </Border>
