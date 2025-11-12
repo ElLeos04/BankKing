@@ -30,6 +30,9 @@ namespace BankKing.Interface.Components
         public static readonly DependencyProperty AmountProperty =
             DependencyProperty.Register("EntryAmount", typeof(string), typeof(HistoryItem), null);
 
+        public static readonly DependencyProperty IsLastItemProperty =
+            DependencyProperty.Register("IsLastItem", typeof(bool), typeof(HistoryItem), new PropertyMetadata(false));
+
         public EntryCategory EntryCategory
         {
             get { return (EntryCategory)GetValue(CategoryProperty); }
@@ -40,6 +43,12 @@ namespace BankKing.Interface.Components
         {
             get { return (string)GetValue(AmountProperty); }
             set { SetValue(AmountProperty, value); }
+        }
+
+        public bool IsLastItem
+        {
+            get { return (bool)GetValue(IsLastItemProperty); }
+            set { SetValue(IsLastItemProperty, value); }
         }
     }
 }

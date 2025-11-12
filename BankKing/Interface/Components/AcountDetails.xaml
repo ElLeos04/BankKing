@@ -20,19 +20,21 @@
                     <TextBlock HorizontalAlignment="Left" Margin="10,27,0,0" TextWrapping="Wrap" Text="+ 0,00€" VerticalAlignment="Top" FontFamily="{DynamicResource AppFontFamily}" Foreground="{DynamicResource PositiveValueBrush}" FontSize="14"/>
                     <TextBlock HorizontalAlignment="Right" Margin="0,27,10,0" TextWrapping="Wrap" Text="- 0,00€" VerticalAlignment="Top" FontFamily="{DynamicResource AppFontFamily}" Foreground="{DynamicResource NegativeValueBrush}" FontSize="14"/>
                 </Grid>
-                <local:CustomButton Loaded="CustomButton_Loaded" Height="25" VerticalAlignment="Bottom" Margin="0,0,0,15" Width="170" ButtonText="Statistiques Détaillées"/>
+                <local:CustomButton Height="25" VerticalAlignment="Bottom" Margin="0,0,0,15" Width="170" ButtonText="Statistiques Détaillées"/>
             </Grid>
 
             <Grid x:Name="ContentPanel" Margin="0,280,0,110">
                 <Border BorderBrush="{DynamicResource LightAccentBrush}" BorderThickness="2" CornerRadius="8,8,8,8" Margin="10,0,10,0">
                     <Grid x:Name="HistoryGridPanel">
                         <Border Name="mask" Background="White" CornerRadius="8"/>
-
-                        <StackPanel x:Name="HistoryPanel" Background="{DynamicResource LightTouchBrush}" Height="{Binding ActualHeight, ElementName=HistoryGridPanel, Mode=OneWay}">
-                            <StackPanel.OpacityMask>
+                        <ScrollViewer Background="{DynamicResource LightTouchBrush}" Style="{StaticResource FavsScrollViewer}">
+                            <ScrollViewer.OpacityMask>
                                 <VisualBrush Visual="{Binding ElementName=mask}"/>
-                            </StackPanel.OpacityMask>
-                        </StackPanel>
+                            </ScrollViewer.OpacityMask>
+                            <StackPanel Background="{DynamicResource LightTouchBrush}" Margin="-2,0,0,0">
+                                
+                            </StackPanel>
+                        </ScrollViewer>
                     </Grid>
 
                 </Border>
@@ -42,6 +44,7 @@
                 <local:CustomButton HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" ButtonText="Ajouter Transaction"/>
                 <local:CustomButton HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" ButtonText="Ajouter Transaction Récurrente"/>
             </Grid>
+            <local:HistoryItem HorizontalAlignment="Left" Margin="355,428,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Border>
 </UserControl>
