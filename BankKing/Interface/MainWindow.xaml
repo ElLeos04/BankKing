@@ -1,12 +1,14 @@
-﻿<Window x:Class="BankKing.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankKing"
+        xmlns:Components="clr-namespace:BankKing.Interface.Components" x:Class="BankKing.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="1080" Width="1920" MinWidth="1920" MinHeight="1089">
+    <StackPanel>
+        <Components:AcountDetails />
+    </StackPanel>
 
-    </Grid>
 </Window>

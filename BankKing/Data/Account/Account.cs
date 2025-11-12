@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BankKing.Data.Account
 {
-    class Account
+    public class Account
     {
         public required string Name { get; set; }
         public double Balance { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BankKing.Data.Entry
 {
-    class AccountEntry
+    public class AccountEntry
     {
         public required EntryCategory Category { get; set; }
         public double Amount { get; set; }
