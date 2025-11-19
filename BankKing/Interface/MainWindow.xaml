@@ -18,14 +18,13 @@
 
 
                     <Grid Margin="0,200,0,0">
-                        <StackPanel VerticalAlignment="Center" Height="0"/>
+                        <StackPanel VerticalAlignment="Center">
+                        </StackPanel>
                     </Grid>
                 </Grid>
             </Border>
         </Grid>
 
-        <Grid x:Name="MainPanel">
-
-        </Grid>
+        <Grid x:Name="MainPanel"/>
     </DockPanel>
 </Window>

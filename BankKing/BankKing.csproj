@@ -7,10 +7,19 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Interface\accounting.png" />
+	  <None Remove="Interface\Components\adjust.png" />
+	</ItemGroup>
 	<ItemGroup>
 		<Content Include="Resources/Inter.ttf">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <Resource Include="Interface\accounting.png" />
+	  <Resource Include="Interface\Components\adjust.png" />
 	</ItemGroup>
 
 </Project>
