@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:BankKing"
         xmlns:Components="clr-namespace:BankKing.Interface.Components" x:Class="BankKing.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920" MinWidth="1920" MinHeight="1080">
+        Title="MainWindow" Height="1080" Width="1920" MinWidth="1920" MinHeight="1080"
+        UseLayoutRounding="True">
 
     <DockPanel>
         <Grid x:Name="SideBar" Background="{DynamicResource PanelBrush}" DockPanel.Dock="Left" Width="215">
@@ -19,12 +20,17 @@
 
                     <Grid Margin="0,200,0,0">
                         <StackPanel VerticalAlignment="Center">
+                            <Components:ImageButton ButtonText="Comptes" ImageSource="/Resources/Icons/account.png"/>
+                            <Components:ImageButton ButtonText="Épargnes" ImageSource="/Resources/Icons/savings.png"/>
+                            <Components:ImageButton ButtonText="Gestion" ImageSource="/Resources/Icons/parameters.png"/>
                         </StackPanel>
                     </Grid>
                 </Grid>
             </Border>
         </Grid>
 
-        <Grid x:Name="MainPanel"/>
+        <Grid x:Name="MainPanel">
+            <Components:AcountDetails/>
+        </Grid>
     </DockPanel>
 </Window>
