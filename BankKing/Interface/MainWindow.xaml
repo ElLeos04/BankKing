@@ -32,13 +32,16 @@
                     BorderBrush="{DynamicResource DarkAccentBrush}" BorderThickness="5" CornerRadius="12">
                 <Grid>
                     <Border Name="mask" Background="White" CornerRadius="9"/>
-                    <Grid Background="{DynamicResource PanelBrush}">
-                        <Grid.OpacityMask>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" CanContentScroll="False"
+                                  Style="{StaticResource FavsScrollViewer}">
+                        <ScrollViewer.OpacityMask>
                             <VisualBrush Visual="{Binding ElementName=mask}"/>
-                        </Grid.OpacityMask>
-                        
-                        <Components:AcountDetails VerticalAlignment="Center" Margin="0,10,0,10"/>
-                    </Grid>
+                        </ScrollViewer.OpacityMask>
+                        <StackPanel x:Name="AccountGrid" Background="{DynamicResource PanelBrush}" Orientation="Horizontal" HorizontalAlignment="Left">
+
+                        </StackPanel>
+
+                    </ScrollViewer>
                 </Grid>
             </Border>
         </Grid>
