@@ -6,9 +6,44 @@
         xmlns:local="clr-namespace:BankKing"
         xmlns:Components="clr-namespace:BankKing.Interface.Components" x:Class="BankKing.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920" MinWidth="1920" MinHeight="1089">
-    <StackPanel>
-        <Components:AcountDetails />
-    </StackPanel>
+        Title="MainWindow" Height="1080" Width="1920" MinWidth="1920" MinHeight="1080"
+        UseLayoutRounding="True">
 
+    <DockPanel>
+        <Grid x:Name="SideBar" Background="{DynamicResource PanelBrush}" DockPanel.Dock="Left" Width="215">
+            <Border BorderBrush="{DynamicResource DarkAccentBrush}" BorderThickness="0,0,5,0">
+                <Grid>
+                    <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"
+                           TextWrapping="Wrap" TextAlignment="Center" FontFamily="{DynamicResource AppFontFamily}" FontSize="65" FontWeight="Bold"
+                           Foreground="{DynamicResource DarkAccentBrush}">Bank King</TextBlock>
+
+
+                    <Grid Margin="0,200,0,0">
+                        <Components:ImageButton ButtonText="Comptes" ImageSource="/Resources/Icons/account.png" VerticalAlignment="Top" Margin="0,150,0,0"/>
+                        <Components:ImageButton ButtonText="Épargnes" ImageSource="/Resources/Icons/savings.png" VerticalAlignment="Top" Margin="0,247,0,0"/>
+                        <Components:ImageButton ButtonText="Gestion" ImageSource="/Resources/Icons/parameters.png" VerticalAlignment="Top" Margin="0,344,0,0"/>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="MainPanel">
+            <Border Margin="10,10,10,10"
+                    BorderBrush="{DynamicResource DarkAccentBrush}" BorderThickness="5" CornerRadius="12">
+                <Grid>
+                    <Border Name="mask" Background="White" CornerRadius="9"/>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" CanContentScroll="False"
+                                  Style="{StaticResource FavsScrollViewer}">
+                        <ScrollViewer.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=mask}"/>
+                        </ScrollViewer.OpacityMask>
+                        <StackPanel x:Name="AccountGrid" Background="{DynamicResource PanelBrush}" Orientation="Horizontal" HorizontalAlignment="Left">
+
+                        </StackPanel>
+
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+        </Grid>
+    </DockPanel>
 </Window>
