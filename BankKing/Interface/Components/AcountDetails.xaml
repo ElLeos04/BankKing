@@ -26,12 +26,12 @@
             <Grid x:Name="ContentPanel" Margin="0,280,0,110">
                 <Border BorderBrush="{DynamicResource LightAccentBrush}" BorderThickness="2" CornerRadius="8,8,8,8" Margin="10,0,10,0">
                     <Grid x:Name="HistoryGridPanel">
-                        <Border Name="mask" Background="White" CornerRadius="8"/>
+                        <Border Name="mask" Background="{DynamicResource LightTouchBrush}" CornerRadius="7"/>
                         <ScrollViewer Style="{StaticResource FavsScrollViewer}">
                             <ScrollViewer.OpacityMask>
                                 <VisualBrush Visual="{Binding ElementName=mask}"/>
                             </ScrollViewer.OpacityMask>
-                            <StackPanel Background="{DynamicResource LightTouchBrush}" Margin="-2,0,0,0">
+                            <StackPanel Margin="-2,0,0,0">
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>

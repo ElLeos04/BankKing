@@ -31,7 +31,7 @@
             <Border Margin="10,10,10,10"
                     BorderBrush="{DynamicResource DarkAccentBrush}" BorderThickness="5" CornerRadius="12">
                 <Grid>
-                    <Border Name="mask" Background="White" CornerRadius="9"/>
+                    <Border Name="mask" Background="{DynamicResource PanelBrush}" CornerRadius="9"/>
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" CanContentScroll="False"
                                   Style="{StaticResource FavsScrollViewer}">
                         <ScrollViewer.OpacityMask>
