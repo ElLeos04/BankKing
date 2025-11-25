@@ -1,14 +1,16 @@
 ﻿using BankKing.Data.Account;
 using BankKing.Services;
+using BankKing.ViewModel.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Windows.Input;
 
 namespace BankKing.ViewModel;
 
-public class MainWindowViewModel(IAccountService accountService) : INotifyPropertyChanged
+public class MainWindowViewModel : INotifyPropertyChanged
 {
     private ObservableCollection<Account>? Accounts
     {
@@ -16,11 +18,28 @@ public class MainWindowViewModel(IAccountService accountService) : INotifyProper
         set;
     }
 
-    private IAccountService _accountService = accountService;
+    public ICommand LoadDataCommand { get; set; }
+
+
+    private readonly IAccountService _accountService;
+
+    public MainWindowViewModel(IAccountService accountService)
+    {
+        _accountService = accountService;
+
+        LoadDataCommand = new RelayCommand(LoadData);
+    }
+
 
     public event PropertyChangedEventHandler? PropertyChanged;
     protected void OnPropertyChanged(string name)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
+
+
+    private void LoadData(object obj)
+    {
+        Accounts = _accountService.GetAccounts();
     }
 }

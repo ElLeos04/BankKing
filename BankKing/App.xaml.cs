@@ -1,7 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System.Configuration;
-using System.Data;
 using System.Windows;
 
 namespace BankKing
@@ -11,33 +8,31 @@ namespace BankKing
     /// </summary>
     public partial class App : Application
     {
-        public static IHost? AppHost { get; private set; }
+        private ServiceProvider _serviceProvider;
 
         public App()
         {
-            AppHost = Host.CreateDefaultBuilder()
-                .ConfigureServices((hostContext, services) =>
-                {
-                    services.AddSingleton<MainWindow>();
-                    services.AddSingleton<Services.IAccountService, Services.MockAccountService>();
-                })
-                .Build();
+            ServiceCollection services = new();
+
+            // Register Services
+            services.AddSingleton<Services.IAccountService, Services.MockAccountService>();
+
+            // Register ViewModel
+            services.AddTransient<ViewModel.MainWindowViewModel>();
+
+            // Register Window
+            services.AddSingleton<MainWindow>();
+
+            _serviceProvider = services.BuildServiceProvider();
         }
 
         protected override async void OnStartup(StartupEventArgs e)
         {
-            await AppHost!.StartAsync();
-            var startupForm = AppHost.Services.GetRequiredService<MainWindow>();
-            startupForm.Show();
+            var mainWindow = _serviceProvider.GetService<MainWindow>();
+            mainWindow!.DataContext = _serviceProvider.GetService<ViewModel.MainWindowViewModel>();
+            mainWindow!.Show();
 
             base.OnStartup(e);
-        }
-
-        protected override async void OnExit(ExitEventArgs e)
-        {
-            await AppHost!.StopAsync();
-
-            base.OnExit(e);
         }
     }
 
