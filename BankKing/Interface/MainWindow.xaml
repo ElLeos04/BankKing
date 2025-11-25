@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankKing"
         xmlns:Components="clr-namespace:BankKing.Interface.Components" x:Class="BankKing.MainWindow"
-        mc:Ignorable="d"
+        xmlns:vm="clr-namespace:BankKing.ViewModel"
+        mc:Ignorable="d" x:Name="window"
         Title="MainWindow" Height="1080" Width="1920" MinWidth="1920" MinHeight="1080"
-        UseLayoutRounding="True">
+        UseLayoutRounding="True" Initialized="Window_Initialized">
 
     <DockPanel>
         <Grid x:Name="SideBar" Background="{DynamicResource PanelBrush}" DockPanel.Dock="Left" Width="215">
@@ -37,10 +38,21 @@
                         <ScrollViewer.OpacityMask>
                             <VisualBrush Visual="{Binding ElementName=mask}"/>
                         </ScrollViewer.OpacityMask>
-                        <StackPanel x:Name="AccountGrid" Background="{DynamicResource PanelBrush}" Orientation="Horizontal" HorizontalAlignment="Left">
 
-                        </StackPanel>
+                        <ItemsControl x:Name="AccountGrid" ItemsSource="{Binding Accounts, ElementName=window}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Components:AcountDetails Account="{Binding}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
 
+                        </ItemsControl>
                     </ScrollViewer>
                 </Grid>
             </Border>
