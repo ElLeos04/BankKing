@@ -19,6 +19,7 @@ namespace BankKing
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddSingleton<MainWindow>();
+                    services.AddSingleton<Services.IAccountService, Services.MockAccountService>();
                 })
                 .Build();
         }
