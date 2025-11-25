@@ -25,9 +25,11 @@ public class AccountViewModel(Account account) : INotifyPropertyChanged
         set
         {
             _account.Balance = value;
-            OnPropertyChanged(nameof(Balance));
+            OnPropertyChanged(nameof(BalanceText));
         }
     }
+
+    public string BalanceText => Balance.ToString("C2");
 
     public List<AccountEntry> Entries
     {
@@ -44,5 +46,10 @@ public class AccountViewModel(Account account) : INotifyPropertyChanged
     protected void OnPropertyChanged(string name)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
+
+    // Mock constructor for design-time data
+    public AccountViewModel() : this(new Account() { Name = "Mock Account", Balance = 0.0, Entries = new List<AccountEntry>() })
+    {
     }
 }
