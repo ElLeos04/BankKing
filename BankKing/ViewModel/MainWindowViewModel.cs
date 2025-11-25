@@ -1,20 +1,14 @@
-﻿using BankKing.Data.Account;
-using BankKing.Services;
+﻿using BankKing.Services;
 using BankKing.ViewModel.Utils;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Text;
-using System.Windows;
 using System.Windows.Input;
 
 namespace BankKing.ViewModel;
 
 public class MainWindowViewModel : INotifyPropertyChanged
 {
-    private ObservableCollection<Account>? Accounts
+    private ObservableCollection<AccountViewModel> Accounts
     {
         get;
         set;
@@ -28,14 +22,14 @@ public class MainWindowViewModel : INotifyPropertyChanged
     public MainWindowViewModel(IAccountService accountService)
     {
         _accountService = accountService;
+
         LoadDataCommand = new RelayCommand(LoadData);
+        Accounts = [];
     }
 
     // For design-time data
-    public MainWindowViewModel()
+    public MainWindowViewModel() : this(new MockAccountService())
     {
-        _accountService = new MockAccountService();
-        LoadDataCommand = new RelayCommand(LoadData);
     }
 
 
@@ -48,6 +42,11 @@ public class MainWindowViewModel : INotifyPropertyChanged
 
     private void LoadData(object obj)
     {
-        Accounts = _accountService.GetAccounts();
+        var accounts = _accountService.GetAccounts();
+
+        foreach (var account in accounts)
+        {
+            Accounts.Add(new(account));
+        }
     }
 }
