@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 
 namespace BankKing.ViewModel;
@@ -26,7 +28,13 @@ public class MainWindowViewModel : INotifyPropertyChanged
     public MainWindowViewModel(IAccountService accountService)
     {
         _accountService = accountService;
+        LoadDataCommand = new RelayCommand(LoadData);
+    }
 
+    // For design-time data
+    public MainWindowViewModel()
+    {
+        _accountService = new MockAccountService();
         LoadDataCommand = new RelayCommand(LoadData);
     }
 
