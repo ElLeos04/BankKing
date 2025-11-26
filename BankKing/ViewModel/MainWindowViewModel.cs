@@ -8,10 +8,10 @@ namespace BankKing.ViewModel;
 
 public class MainWindowViewModel : INotifyPropertyChanged
 {
-    private ObservableCollection<AccountViewModel> Accounts
+    public ObservableCollection<AccountViewModel> Accounts
     {
         get;
-        set;
+        private set;
     }
 
     public ICommand LoadDataCommand { get; set; }

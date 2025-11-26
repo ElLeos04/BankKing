@@ -29,6 +29,9 @@ public class MockAccountService : IAccountService
             new() { Name = "Compte1", Balance = 1000 },
             new() { Name = "Compte2", Balance = 3272.12 },
             new() { Name = "Compte3", Balance = 56.75 },
+            new() { Name = "Compte4", Balance = 56.75 },
+            new() { Name = "Compte5", Balance = 56.75 },
+            new() { Name = "Compte6", Balance = 56.75 },
         ])
         ;
 
