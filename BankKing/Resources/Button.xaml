@@ -7,13 +7,14 @@
 
     <Style x:Key="RoundedButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource LightTouchBrush}"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LightAccentBrush}"/>
+        <Setter Property="BorderThickness" Value="2"/>
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border" 
-                            CornerRadius="20" 
+                            CornerRadius="6" 
                             Background="{TemplateBinding Background}" 
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             BorderBrush="{TemplateBinding BorderBrush}">
