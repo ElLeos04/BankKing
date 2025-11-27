@@ -18,8 +18,7 @@
                             Background="{TemplateBinding Background}" 
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             BorderBrush="{TemplateBinding BorderBrush}">
-                        <ContentPresenter HorizontalAlignment="Center" 
-                                          VerticalAlignment="Center" 
+                        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                                           Margin="{TemplateBinding Padding}"/>
                     </Border>
 
@@ -39,4 +38,12 @@
         </Setter>
     </Style>
 
+    <Style x:Key="SideBarButtonStyle" TargetType="Button" BasedOn="{StaticResource RoundedButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource DarkPanelBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource DarkAccentBrush}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+    </Style>
+
 </ResourceDictionary>
+    
