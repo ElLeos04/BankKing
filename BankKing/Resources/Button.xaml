@@ -18,7 +18,7 @@
                             Background="{TemplateBinding Background}" 
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             BorderBrush="{TemplateBinding BorderBrush}">
-                        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                           Margin="{TemplateBinding Padding}"/>
                     </Border>
 
