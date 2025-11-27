@@ -2,12 +2,21 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankKing"
         xmlns:Components="clr-namespace:BankKing.Interface.Components" x:Class="BankKing.MainWindow"
-        mc:Ignorable="d"
+        xmlns:vm="clr-namespace:BankKing.ViewModel"
+        mc:Ignorable="d" x:Name="window"
         Title="MainWindow" Height="1080" Width="1920" MinWidth="1920" MinHeight="1080"
-        UseLayoutRounding="True">
+        UseLayoutRounding="True"
+        d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel, IsDesignTimeCreatable=True}">
+
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding LoadDataCommand}" />
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
 
     <DockPanel>
         <Grid x:Name="SideBar" Background="{DynamicResource PanelBrush}" DockPanel.Dock="Left" Width="215">
@@ -31,16 +40,33 @@
             <Border Margin="10,10,10,10"
                     BorderBrush="{DynamicResource DarkAccentBrush}" BorderThickness="5" CornerRadius="12">
                 <Grid>
-                    <Border Name="mask" Background="White" CornerRadius="9"/>
+                    <Border Name="mask" Background="{DynamicResource PanelBrush}" CornerRadius="9"/>
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" CanContentScroll="False"
                                   Style="{StaticResource FavsScrollViewer}">
                         <ScrollViewer.OpacityMask>
                             <VisualBrush Visual="{Binding ElementName=mask}"/>
                         </ScrollViewer.OpacityMask>
-                        <StackPanel x:Name="AccountGrid" Background="{DynamicResource PanelBrush}" Orientation="Horizontal" HorizontalAlignment="Left">
 
-                        </StackPanel>
+                        <ItemsControl x:Name="AccountGrid" ItemsSource="{Binding Accounts}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
 
+                            <ItemsControl.ItemContainerStyle>
+                                <Style TargetType="ContentPresenter">
+                                    <Setter Property="Margin" Value="10,10,0,0"/>
+                                </Style>
+                            </ItemsControl.ItemContainerStyle>
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Components:AcountDetails Margin="0,0,10,10"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+
+                        </ItemsControl>
                     </ScrollViewer>
                 </Grid>
             </Border>

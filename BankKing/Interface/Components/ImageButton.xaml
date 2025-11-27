@@ -5,23 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BankKing.Interface.Components"
              mc:Ignorable="d" Width="200" Height="82.5">
-    <Border BorderBrush="{DynamicResource DarkAccentBrush}" BorderThickness="2" CornerRadius="6">
-        <Grid>
-            <Border Name="mask" Background="White" CornerRadius="5"/>
-            <Button BorderBrush="{DynamicResource DarkPanelBrush}" Background="{DynamicResource DarkPanelBrush}"
-                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                <Button.OpacityMask>
-                    <VisualBrush Visual="{Binding ElementName=mask}"/>
-                </Button.OpacityMask>
 
-                <Grid>
-                    <Image Source="{Binding ImageSource, ElementName=control}" Width="50" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+    <Button Style="{StaticResource SideBarButtonStyle}">
+        <Grid Margin="0">
+            <Image Source="{Binding ImageSource, ElementName=control}" Width="50" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
                            RenderOptions.BitmapScalingMode="HighQuality"/>
-                    <TextBlock x:Name="ButtonTextBlock" TextWrapping="Wrap" TextAlignment="Center" Foreground="{DynamicResource DarkAccentBrush}"
+            <TextBlock x:Name="ButtonTextBlock" TextWrapping="Wrap" TextAlignment="Center" Foreground="{DynamicResource DarkAccentBrush}"
                         Text="{Binding ButtonText ,ElementName=control}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="80,0,0,0" FontSize="25"/>
-                </Grid>
-
-            </Button>
         </Grid>
-    </Border>
+    </Button>
 </UserControl>
