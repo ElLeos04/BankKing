@@ -25,6 +25,9 @@ public class MockAccountService : IAccountService
 
     public ObservableCollection<Account> GetAccounts()
     {
+        DateTime now = DateTime.Now;
+
+
         EntryCategory cat1 = new()
         {
             Name = "Nourriture",
@@ -36,13 +39,13 @@ public class MockAccountService : IAccountService
         {
             Category = cat1,
             Amount = -50.75,
-            Date = DateTime.Now.AddDays(-2)
+            Date = now.AddDays(-2)
         });
         entries.Add(new AccountEntry()
         {
             Category = cat1,
             Amount = -23.40,
-            Date = DateTime.Now.AddDays(-7)
+            Date = now.AddDays(-7)
         });
 
         EntryCategory cat2 = new()
@@ -55,7 +58,7 @@ public class MockAccountService : IAccountService
         {
             Category = cat2,
             Amount = 2500.00,
-            Date = DateTime.Now.AddDays(-2)
+            Date = now.AddDays(-2)
         });
 
         EntryCategory cat3 = new()
@@ -68,7 +71,7 @@ public class MockAccountService : IAccountService
         {
             Category = cat3,
             Amount = -150.00,
-            Date = DateTime.Now.AddDays(-1)
+            Date = now.AddDays(-1)
         });
 
 

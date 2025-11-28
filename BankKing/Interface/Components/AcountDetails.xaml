@@ -39,8 +39,33 @@
                             <ScrollViewer.OpacityMask>
                                 <VisualBrush Visual="{Binding ElementName=mask}"/>
                             </ScrollViewer.OpacityMask>
-                            <StackPanel Margin="-2,0,0,0">
-                            </StackPanel>
+
+                            <ItemsControl ItemsSource="{Binding GroupedEntries}">
+                                <ItemsControl.GroupStyle>
+                                    <GroupStyle>
+                                        <GroupStyle.HeaderTemplate>
+                                            <DataTemplate>
+                                                <Border Background="LightGray" Padding="5" Margin="0,10,0,5">
+                                                    <StackPanel Orientation="Horizontal">
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </GroupStyle.HeaderTemplate>
+                                    </GroupStyle>
+                                </ItemsControl.GroupStyle>
+
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type Entry:AccountEntry}">
+                                        <local:HistoryItem/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </ScrollViewer>
                     </Grid>
 
@@ -57,7 +82,6 @@
                                TextWrapping="Wrap" TextAlignment="Center"/>
                 </Button>
             </Grid>
-            <local:HistoryItem HorizontalAlignment="Left" Margin="355,428,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Border>
 </UserControl>

@@ -1,13 +1,14 @@
 ﻿using BankKing.Data.Account;
 using BankKing.Data.Entry;
 using System.ComponentModel;
+using System.Windows.Data;
 
 namespace BankKing.ViewModel;
 
-public class AccountViewModel(Account account) : INotifyPropertyChanged
+public class AccountViewModel : INotifyPropertyChanged
 {
 
-    private Account _account = account;
+    private Account _account;
 
     public string Name
     {
@@ -37,15 +38,25 @@ public class AccountViewModel(Account account) : INotifyPropertyChanged
         set
         {
             _account.Entries = value;
-            OnPropertyChanged(nameof(Entries));
+            OnPropertyChanged(nameof(GroupedEntries));
         }
     }
+
+    public ICollectionView GroupedEntries { get; private set; }
 
 
     public event PropertyChangedEventHandler? PropertyChanged;
     protected void OnPropertyChanged(string name)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
+
+    public AccountViewModel(Account account)
+    {
+        _account = account;
+
+        GroupedEntries = CollectionViewSource.GetDefaultView(Entries);
+        GroupedEntries.GroupDescriptions.Add(new PropertyGroupDescription("Date"));
     }
 
     // Mock constructor for design-time data
