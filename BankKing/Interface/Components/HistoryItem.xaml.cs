@@ -24,31 +24,13 @@ namespace BankKing.Interface.Components
             InitializeComponent();
         }
 
-        public static readonly DependencyProperty CategoryProperty =
-            DependencyProperty.Register("EntryCategory", typeof(EntryCategory), typeof(HistoryItem), null);
+        public static readonly DependencyProperty HideBottomBorderProperty =
+            DependencyProperty.Register(nameof(HideBottomBorder), typeof(bool), typeof(HistoryItem), new PropertyMetadata(false));
 
-        public static readonly DependencyProperty AmountProperty =
-            DependencyProperty.Register("EntryAmount", typeof(string), typeof(HistoryItem), null);
-
-        public static readonly DependencyProperty IsLastItemProperty =
-            DependencyProperty.Register("IsLastItem", typeof(bool), typeof(HistoryItem), new PropertyMetadata(false));
-
-        public EntryCategory EntryCategory
+        public bool HideBottomBorder
         {
-            get { return (EntryCategory)GetValue(CategoryProperty); }
-            set { SetValue(CategoryProperty, value); }
-        }
-
-        public string EntryAmount
-        {
-            get { return (string)GetValue(AmountProperty); }
-            set { SetValue(AmountProperty, value); }
-        }
-
-        public bool IsLastItem
-        {
-            get { return (bool)GetValue(IsLastItemProperty); }
-            set { SetValue(IsLastItemProperty, value); }
+            get { return (bool)GetValue(HideBottomBorderProperty); }
+            set { SetValue(HideBottomBorderProperty, value); }
         }
     }
 }

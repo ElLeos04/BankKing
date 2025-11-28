@@ -4,14 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BankKing.Interface.Components"
+             xmlns:Data="clr-namespace:BankKing.Data.Entry"
              mc:Ignorable="d"
-             Width="278" Height="34">
-    <Border BorderBrush="{DynamicResource LightAccentBrush}" Background="{DynamicResource PanelBrush}" CornerRadius="0">
+             d:Width="278" Height="34"
+             d:DataContext="{d:DesignInstance Type=Data:AccountEntry, IsDesignTimeCreatable=True}">
+    <Border BorderBrush="{DynamicResource LightAccentBrush}" Background="{DynamicResource PanelBrush}">
         <Border.Style>
             <Style TargetType="Border">
                 <Setter Property="BorderThickness" Value="0,0,0,2"/>
                 <Style.Triggers>
-                    <DataTrigger Binding="{Binding IsLastItem, ElementName=component}" Value="True">
+                    <DataTrigger Binding="{Binding HideBottomBorder, ElementName=component}" Value="True">
                         <Setter Property="BorderThickness" Value="0,0,0,0"/>
                     </DataTrigger>
                 </Style.Triggers>
@@ -19,11 +21,11 @@
         </Border.Style>
         <Grid>
             <TextBlock HorizontalAlignment="Left" Margin="15,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" FontFamily="{DynamicResource AppFontFamily}" FontSize="14" Foreground="{DynamicResource DarkAccentBrush}"
-                       Text="{Binding EntryCategory, ElementName=component}">
+                       Text="{Binding Category}">
             </TextBlock>
             <GridSplitter HorizontalAlignment="Center" Width="2" Background="{DynamicResource LightAccentBrush}"/>
             <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,15,0" TextAlignment="Right" Foreground="{DynamicResource PositiveValueBrush}"
-                       Text="{Binding EntryAmount, ElementName=component}">
+                       Text="{Binding Amount}">
             </TextBlock>
         </Grid>
     </Border>
