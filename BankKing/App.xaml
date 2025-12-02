@@ -8,6 +8,7 @@
                 <ResourceDictionary Source="/Resources/ColorTheme.xaml"/>
                 <ResourceDictionary Source="/Resources/Button.xaml"/>
                 <ResourceDictionary Source="/Resources/ScrollPanel.xaml"/>
+                <ResourceDictionary Source="/Resources/HistoryItem.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
