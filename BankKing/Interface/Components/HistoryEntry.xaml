@@ -1,4 +1,4 @@
-﻿<UserControl x:Name="component" x:Class="BankKing.Interface.Components.HistoryItem"
+﻿<UserControl x:Name="component" x:Class="BankKing.Interface.Components.HistoryEntry"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,17 +8,7 @@
              mc:Ignorable="d"
              d:Width="278" Height="34"
              d:DataContext="{d:DesignInstance Type=Data:AccountEntry, IsDesignTimeCreatable=True}">
-    <Border BorderBrush="{DynamicResource LightAccentBrush}" Background="{DynamicResource PanelBrush}">
-        <Border.Style>
-            <Style TargetType="Border">
-                <Setter Property="BorderThickness" Value="0,0,0,2"/>
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding HideBottomBorder, ElementName=component}" Value="True">
-                        <Setter Property="BorderThickness" Value="0,0,0,0"/>
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-        </Border.Style>
+    <Border Style="{StaticResource HistoryItemBorder}">
         <Grid>
             <TextBlock HorizontalAlignment="Left" Margin="15,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" FontFamily="{DynamicResource AppFontFamily}" FontSize="14" Foreground="{DynamicResource DarkAccentBrush}"
                        Text="{Binding Category}">

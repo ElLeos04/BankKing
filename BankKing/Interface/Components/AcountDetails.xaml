@@ -62,7 +62,7 @@
 
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate DataType="{x:Type Entry:AccountEntry}">
-                                        <local:HistoryItem/>
+                                        <local:HistoryEntry/>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
