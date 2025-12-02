@@ -5,7 +5,7 @@ namespace BankKing.Services
 {
     public interface IAccountService
     {
-        ObservableCollection<Account> GetAccounts();
+        List<Account> GetAccounts();
         void RenameAccount(Account account, string newName);
         void SaveAccounts(List<Account> accounts);
     }

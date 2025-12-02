@@ -23,7 +23,7 @@ public class MockAccountService : IAccountService
         account.Name = newName;
     }
 
-    public ObservableCollection<Account> GetAccounts()
+    public List<Account> GetAccounts()
     {
         DateTime now = DateTime.Now;
 
@@ -76,7 +76,7 @@ public class MockAccountService : IAccountService
 
 
         // In a real application, this method would retrieve data from a database
-        return new ObservableCollection<Account>([
+        return new List<Account>([
             new() { Name = "Compte1", Balance = 1000, Entries = entries },
             new() { Name = "Compte2", Balance = 3272.12 },
             new() { Name = "Compte3", Balance = 56.75 },
