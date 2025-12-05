@@ -9,7 +9,7 @@ namespace BankKing.ViewModel;
 public class AccountViewModel : INotifyPropertyChanged
 {
 
-    private Account _account;
+    private BankAccount _account;
 
     public string Name
     {
@@ -44,7 +44,7 @@ public class AccountViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 
-    public AccountViewModel(Account account)
+    public AccountViewModel(BankAccount account)
     {
         _account = account;
 
@@ -63,9 +63,9 @@ public class AccountViewModel : INotifyPropertyChanged
     {
     }
 
-    private static Account MockAccount()
+    private static BankAccount MockAccount()
     {
-        var account = new Account()
+        var account = new BankAccount()
         {
             Name = "Compte courant",
             Balance = 1523.45,

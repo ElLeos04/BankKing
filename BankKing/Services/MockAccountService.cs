@@ -10,20 +10,20 @@ namespace BankKing.Services;
 public class MockAccountService : IAccountService
 {
 
-    public async void SaveAccounts(List<Account> accounts)
+    public async void SaveAccounts(List<BankAccount> accounts)
     {
         // In a real application, this method would save data to a database
         await Task.Delay(1000); // Simulate async work
     }
 
-    public async void RenameAccount(Account account, string newName)
+    public async void RenameAccount(BankAccount account, string newName)
     {
         // In a real application, this method would update data in a database
         await Task.Delay(500); // Simulate async work
         account.Name = newName;
     }
 
-    public List<Account> GetAccounts()
+    public List<BankAccount> GetAccounts()
     {
         DateTime now = DateTime.Now;
 
@@ -76,7 +76,7 @@ public class MockAccountService : IAccountService
 
 
         // In a real application, this method would retrieve data from a database
-        return new List<Account>([
+        return new List<BankAccount>([
             new() { Name = "Compte1", Balance = 1000, Entries = entries },
             new() { Name = "Compte2", Balance = 3272.12 },
             new() { Name = "Compte3", Balance = 56.75 },
