@@ -29,17 +29,26 @@ namespace BankKing.Interface.Components
         public static readonly DependencyProperty ImageSourceProperty =
                         DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(ImageButton), new PropertyMetadata(null));
 
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(ImageButton), new PropertyMetadata(null));
+
 
         public string ButtonText
         {
-            get { return (string)GetValue(ButtonTextProperty); }
+            get { return (string) GetValue(ButtonTextProperty); }
             set { SetValue(ButtonTextProperty, value); }
         }
 
         public ImageSource ImageSource
         {
-            get { return (ImageSource)GetValue(ImageSourceProperty); }
+            get { return (ImageSource) GetValue(ImageSourceProperty); }
             set { SetValue(ImageSourceProperty, value); }
+        }
+
+        public ICommand Command
+        {
+            get { return (ICommand) GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
         }
     }
 }
