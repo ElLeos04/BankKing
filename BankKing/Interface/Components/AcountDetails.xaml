@@ -32,9 +32,10 @@
             </Grid>
 
             <Grid x:Name="ContentPanel" Margin="0,280,0,110">
-                <Border BorderBrush="{DynamicResource LightAccentBrush}" BorderThickness="2" CornerRadius="8,8,8,8" Margin="10,0,10,0">
+                <Border BorderBrush="{DynamicResource LightAccentBrush}" Background="{DynamicResource PanelBrush}" BorderThickness="2" CornerRadius="8,8,8,8" Margin="10,0,10,0">
                     <Grid x:Name="HistoryGridPanel">
-                        <Border Name="mask" Background="{DynamicResource LightTouchBrush}" CornerRadius="7"/>
+                        <Border Name="mask" Background="{DynamicResource PanelBrush}" CornerRadius="14"/>
+
                         <ScrollViewer Style="{StaticResource FavsScrollViewer}">
                             <ScrollViewer.OpacityMask>
                                 <VisualBrush Visual="{Binding ElementName=mask}"/>
@@ -42,16 +43,7 @@
 
                             <ItemsControl ItemsSource="{Binding GroupedEntries}">
                                 <ItemsControl.GroupStyle>
-                                    <GroupStyle>
-                                        <GroupStyle.HeaderTemplate>
-                                            <DataTemplate>
-                                                <Border Background="LightGray" Padding="5" Margin="0,10,0,5">
-                                                    <StackPanel Orientation="Horizontal">
-                                                    </StackPanel>
-                                                </Border>
-                                            </DataTemplate>
-                                        </GroupStyle.HeaderTemplate>
-                                    </GroupStyle>
+                                    <GroupStyle ContainerStyle="{StaticResource HistoryHeader}"/>
                                 </ItemsControl.GroupStyle>
 
                                 <ItemsControl.ItemsPanel>
