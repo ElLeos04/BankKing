@@ -5,8 +5,8 @@ namespace BankKing.Services
 {
     public interface IAccountService
     {
-        List<Account> GetAccounts();
-        void RenameAccount(Account account, string newName);
-        void SaveAccounts(List<Account> accounts);
+        List<BankAccount> GetAccounts();
+        void RenameAccount(BankAccount account, string newName);
+        void SaveAccounts(List<BankAccount> accounts);
     }
 }

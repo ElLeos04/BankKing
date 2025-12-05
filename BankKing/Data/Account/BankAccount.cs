@@ -5,13 +5,13 @@ using System.Text;
 
 namespace BankKing.Data.Account
 {
-    public class Account
+    public class BankAccount
     {
         public required string Name { get; set; }
         public double Balance { get; set; }
         public List<AccountEntry> Entries { get; set; }
 
-        public Account()
+        public BankAccount()
         {
             Entries = [];
         }

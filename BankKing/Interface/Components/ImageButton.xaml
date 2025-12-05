@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:BankKing.Interface.Components"
              mc:Ignorable="d" Width="200" Height="82.5">
 
-    <Button Style="{StaticResource SideBarButtonStyle}">
+    <Button Style="{StaticResource SideBarButtonStyle}" Command="{Binding Command, ElementName=control}">
         <Grid Margin="0">
             <Image Source="{Binding ImageSource, ElementName=control}" Width="50" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
                            RenderOptions.BitmapScalingMode="HighQuality"/>
