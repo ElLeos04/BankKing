@@ -1,13 +1,15 @@
 ﻿using BankKing.Data.Account;
 using BankKing.Data.Entry;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Data;
 
 namespace BankKing.ViewModel;
 
-public class AccountViewModel(Account account) : INotifyPropertyChanged
+public class AccountViewModel : INotifyPropertyChanged
 {
 
-    private Account _account = account;
+    private Account _account;
 
     public string Name
     {
@@ -31,15 +33,9 @@ public class AccountViewModel(Account account) : INotifyPropertyChanged
 
     public string BalanceText => Balance.ToString("C2");
 
-    public List<AccountEntry> Entries
-    {
-        get => _account.Entries;
-        set
-        {
-            _account.Entries = value;
-            OnPropertyChanged(nameof(Entries));
-        }
-    }
+    public ObservableCollection<HistoryEntryViewModel> Entries { get; private set; }
+
+    public ICollectionView GroupedEntries { get; private set; }
 
 
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -48,8 +44,63 @@ public class AccountViewModel(Account account) : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 
-    // Mock constructor for design-time data
-    public AccountViewModel() : this(new Account() { Name = "Mock Account", Balance = 0.0, Entries = new List<AccountEntry>() })
+    public AccountViewModel(Account account)
     {
+        _account = account;
+
+        Entries = [];
+        foreach (AccountEntry entry in account.Entries)
+        {
+            Entries.Add(new HistoryEntryViewModel(entry));
+        }
+
+        GroupedEntries = CollectionViewSource.GetDefaultView(Entries);
+        GroupedEntries.GroupDescriptions.Add(new PropertyGroupDescription("Date"));
+    }
+
+    // Mock constructor for design-time data
+    public AccountViewModel() : this(MockAccount())
+    {
+    }
+
+    private static Account MockAccount()
+    {
+        var account = new Account()
+        {
+            Name = "Compte courant",
+            Balance = 1523.45,
+            Entries = []
+        };
+
+        AccountEntry e1 =  new AccountEntry()
+        {
+            Amount = -50.75,
+            Date = System.DateTime.Today.AddDays(-2),
+            Category = new EntryCategory() { Name = "Nourriture", Type = EntryType.Expense }
+        };
+
+        account.Entries.Add(e1);
+        account.Entries.Add(new AccountEntry()
+        {
+            Amount = 2500.00,
+            Date = System.DateTime.Today.AddDays(-2),
+            Category = new EntryCategory() { Name = "Salaire", Type = EntryType.Income }
+        });
+
+        account.Entries.Add(new AccountEntry()
+        {
+            Amount = -150.00,
+            Date = System.DateTime.Today.AddDays(-1),
+            Category = new EntryCategory() { Name = "Impôts", Type = EntryType.Expense }
+        });
+        account.Entries.Add(new AccountEntry()
+        {
+            Amount = -23.40,
+            Date = System.DateTime.Today.AddDays(-7),
+            Category = new EntryCategory() { Name = "Nourriture", Type = EntryType.Expense }
+        });
+
+
+        return account;
     }
 }

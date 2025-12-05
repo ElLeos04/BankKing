@@ -32,15 +32,32 @@
             </Grid>
 
             <Grid x:Name="ContentPanel" Margin="0,280,0,110">
-                <Border BorderBrush="{DynamicResource LightAccentBrush}" BorderThickness="2" CornerRadius="8,8,8,8" Margin="10,0,10,0">
+                <Border BorderBrush="{DynamicResource LightAccentBrush}" Background="{DynamicResource PanelBrush}" BorderThickness="2" CornerRadius="8,8,8,8" Margin="10,0,10,0">
                     <Grid x:Name="HistoryGridPanel">
-                        <Border Name="mask" Background="{DynamicResource LightTouchBrush}" CornerRadius="7"/>
+                        <Border Name="mask" Background="{DynamicResource PanelBrush}" CornerRadius="14"/>
+
                         <ScrollViewer Style="{StaticResource FavsScrollViewer}">
                             <ScrollViewer.OpacityMask>
                                 <VisualBrush Visual="{Binding ElementName=mask}"/>
                             </ScrollViewer.OpacityMask>
-                            <StackPanel Margin="-2,0,0,0">
-                            </StackPanel>
+
+                            <ItemsControl ItemsSource="{Binding GroupedEntries}">
+                                <ItemsControl.GroupStyle>
+                                    <GroupStyle ContainerStyle="{StaticResource HistoryHeader}"/>
+                                </ItemsControl.GroupStyle>
+
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type Entry:AccountEntry}">
+                                        <local:HistoryEntry/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </ScrollViewer>
                     </Grid>
 
@@ -57,7 +74,6 @@
                                TextWrapping="Wrap" TextAlignment="Center"/>
                 </Button>
             </Grid>
-            <local:HistoryItem HorizontalAlignment="Left" Margin="355,428,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Border>
 </UserControl>
