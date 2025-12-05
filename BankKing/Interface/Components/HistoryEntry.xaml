@@ -4,18 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BankKing.Interface.Components"
-             xmlns:Data="clr-namespace:BankKing.Data.Entry"
+             xmlns:vm="clr-namespace:BankKing.ViewModel"
              mc:Ignorable="d"
              d:Width="278" Height="34"
-             d:DataContext="{d:DesignInstance Type=Data:AccountEntry, IsDesignTimeCreatable=True}">
+             d:DataContext="{d:DesignInstance Type=vm:HistoryEntryViewModel, IsDesignTimeCreatable=True}">
     <Border Style="{StaticResource HistoryItemBorder}">
         <Grid>
             <TextBlock HorizontalAlignment="Left" Margin="15,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" FontFamily="{DynamicResource AppFontFamily}" FontSize="14" Foreground="{DynamicResource DarkAccentBrush}"
-                       Text="{Binding Category}">
+                       Text="{Binding CategoryName}">
             </TextBlock>
             <GridSplitter HorizontalAlignment="Center" Width="2" Background="{DynamicResource LightAccentBrush}"/>
-            <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,15,0" TextAlignment="Right" Foreground="{DynamicResource PositiveValueBrush}"
-                       Text="{Binding Amount}">
+            <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,15,0" TextAlignment="Right" Foreground="{Binding AmountColor}"
+                       Text="{Binding AmountText}">
             </TextBlock>
         </Grid>
     </Border>
