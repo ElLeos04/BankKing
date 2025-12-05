@@ -1,15 +1,22 @@
 ﻿using BankKing.Data.Account;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace BankKing.Data
 {
-    public class XMLAccountSaver : IAccountSaver
+    public class XMLAccountSaver : IAccountIO
     {
+        private const string FOLDER_PATH = "/Data/Accounts/";
+
         public void SaveAccount(BankAccount account)
         {
-            throw new NotImplementedException();
+            XmlSerializer serializer = new XmlSerializer(typeof(BankAccount));
+            string filePath = FOLDER_PATH + account.Name + ".xml";
+
+            using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                serializer.Serialize(fileStream, account);
+            }
         }
     }
 }

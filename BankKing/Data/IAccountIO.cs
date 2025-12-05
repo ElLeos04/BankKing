@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BankKing.Data
 {
-    public interface IAccountSaver
+    public interface IAccountIO
     {
         void SaveAccount(BankAccount account);
     }

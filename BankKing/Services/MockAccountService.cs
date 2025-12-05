@@ -1,9 +1,6 @@
-﻿using BankKing.Data.Account;
+﻿using BankKing.Data;
+using BankKing.Data.Account;
 using BankKing.Data.Entry;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
 
 namespace BankKing.Services;
 
@@ -12,8 +9,12 @@ public class MockAccountService : IAccountService
 
     public async void SaveAccounts(List<BankAccount> accounts)
     {
-        // In a real application, this method would save data to a database
-        await Task.Delay(1000); // Simulate async work
+        IAccountIO accountIO = new XMLAccountSaver();
+
+        foreach (BankAccount account in accounts)
+        {
+            accountIO.SaveAccount(account);
+        }
     }
 
     public async void RenameAccount(BankAccount account, string newName)
