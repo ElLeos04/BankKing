@@ -9,24 +9,28 @@ namespace BankKing.ViewModel;
 public class AccountViewModel : INotifyPropertyChanged
 {
 
-    private BankAccount _account;
+    public BankAccount Account
+    {
+        get;
+        private set;
+    }
 
     public string Name
     {
-        get => _account.Name;
+        get => Account.Name;
         set
         {
-            _account.Name = value;
+            Account.Name = value;
             OnPropertyChanged(nameof(Name));
         }
     }
 
     public double Balance
     {
-        get => _account.Balance;
+        get => Account.Balance;
         set
         {
-            _account.Balance = value;
+            Account.Balance = value;
             OnPropertyChanged(nameof(BalanceText));
         }
     }
@@ -46,7 +50,7 @@ public class AccountViewModel : INotifyPropertyChanged
 
     public AccountViewModel(BankAccount account)
     {
-        _account = account;
+        Account = account;
 
         Entries = [];
         foreach (AccountEntry entry in account.Entries)
@@ -72,7 +76,7 @@ public class AccountViewModel : INotifyPropertyChanged
             Entries = []
         };
 
-        AccountEntry e1 =  new AccountEntry()
+        AccountEntry e1 = new AccountEntry()
         {
             Amount = -50.75,
             Date = System.DateTime.Today.AddDays(-2),
