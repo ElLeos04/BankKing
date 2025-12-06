@@ -8,5 +8,7 @@ namespace BankKing.Data
     public interface IAccountIO
     {
         void SaveAccount(BankAccount account);
+
+        List<BankAccount> GetAccounts();
     }
 }
