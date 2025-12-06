@@ -31,7 +31,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
     }
 
     // For design-time data
-    public MainWindowViewModel() : this(new MockAccountService())
+    public MainWindowViewModel() : this(new AccountService())
     {
     }
 

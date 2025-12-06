@@ -16,6 +16,9 @@
         <b:EventTrigger EventName="Loaded">
             <b:InvokeCommandAction Command="{Binding LoadDataCommand}" />
         </b:EventTrigger>
+        <b:EventTrigger EventName="Closing">
+            <b:InvokeCommandAction Command="{Binding SaveDataCommand}" />
+        </b:EventTrigger>
     </b:Interaction.Triggers>
 
     <DockPanel>
