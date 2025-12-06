@@ -4,11 +4,11 @@ using BankKing.Data.Entry;
 
 namespace BankKing.Services;
 
-public class MockAccountService : IAccountService
+public class AccountService : IAccountService
 {
     private readonly IAccountIO _accountIO;
 
-    public MockAccountService()
+    public AccountService()
     {
         _accountIO = new XMLAccountIO();
     }

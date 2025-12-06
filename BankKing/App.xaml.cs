@@ -15,7 +15,7 @@ namespace BankKing
             ServiceCollection services = new();
 
             // Register Services
-            services.AddSingleton<Services.IAccountService, Services.MockAccountService>();
+            services.AddSingleton<Services.IAccountService, Services.AccountService>();
 
             // Register ViewModel
             services.AddTransient<ViewModel.MainWindowViewModel>();
