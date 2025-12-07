@@ -9,7 +9,7 @@
             x:Class="BankKing.Interface.Components.AcountDetails"
             mc:Ignorable="d" Width="300" d:Height="994"
             d:DataContext="{d:DesignInstance Type=viewmodel:AccountViewModel, IsDesignTimeCreatable=True}">
-    <Border BorderThickness="0" Background="{DynamicResource DarkPanelBrush}" CornerRadius="6,6,6,6">
+    <Border BorderThickness="0" Background="{DynamicResource DarkPanelBrush}" CornerRadius="12">
         <Grid>
             <Grid x:Name="HeaderPanel" Height="280" VerticalAlignment="Top">
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,33,0,0"
