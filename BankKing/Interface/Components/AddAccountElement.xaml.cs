@@ -15,7 +15,7 @@ namespace BankKing.Interface.Components
         }
 
         public static readonly DependencyProperty CommandProperty =
-            DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(ImageButton), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(AddAccountElement), new PropertyMetadata(null));
 
         public ICommand Command
         {
