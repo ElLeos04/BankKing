@@ -50,26 +50,31 @@
                             <VisualBrush Visual="{Binding ElementName=mask}"/>
                         </ScrollViewer.OpacityMask>
 
-                        <ItemsControl x:Name="AccountGrid" ItemsSource="{Binding Accounts}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
+                        <StackPanel Orientation="Horizontal">
 
-                            <ItemsControl.ItemContainerStyle>
-                                <Style TargetType="ContentPresenter">
-                                    <Setter Property="Margin" Value="10,10,0,0"/>
-                                </Style>
-                            </ItemsControl.ItemContainerStyle>
 
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Components:AcountDetails Margin="0,0,10,10"/>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
+                            <ItemsControl x:Name="AccountGrid" ItemsSource="{Binding Accounts}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
 
-                        </ItemsControl>
+                                <ItemsControl.ItemContainerStyle>
+                                    <Style TargetType="ContentPresenter">
+                                        <Setter Property="Margin" Value="10,10,0,0"/>
+                                    </Style>
+                                </ItemsControl.ItemContainerStyle>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Components:AcountDetails Margin="0,0,10,10"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+
+                            </ItemsControl>
+
+                        </StackPanel>
                     </ScrollViewer>
                 </Grid>
             </Border>
