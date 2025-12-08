@@ -1,6 +1,7 @@
 ﻿using BankKing.Data.Account;
 using BankKing.Services;
 using BankKing.ViewModel.Utils;
+using System.CodeDom;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -15,9 +16,11 @@ public class MainWindowViewModel : INotifyPropertyChanged
         private set;
     }
 
-    public ICommand LoadDataCommand { get; set; }
+    public ICommand LoadDataCommand => new RelayCommand(LoadData);
 
-    public ICommand SaveDataCommand { get; set; }
+    public ICommand SaveDataCommand => new RelayCommand(SaveData);
+
+    public ICommand AddAccountCommand => new RelayCommand(AddAccount);
 
     private readonly IAccountService _accountService;
 
@@ -25,8 +28,6 @@ public class MainWindowViewModel : INotifyPropertyChanged
     {
         _accountService = accountService;
 
-        LoadDataCommand = new RelayCommand(LoadData);
-        SaveDataCommand = new RelayCommand(SaveData);
         Accounts = [];
     }
 
@@ -61,5 +62,14 @@ public class MainWindowViewModel : INotifyPropertyChanged
             accounts.Add(accountVM.Account);
         }
         _accountService.SaveAccounts(accounts);
+    }
+
+    private void AddAccount(object obj)
+    {
+        // For demo purposes, we create a mock account
+        BankAccount newAccount = new() { Name = "Compte" + Random.Shared.Next(), Balance = 50 };
+
+        Accounts.Add(new AccountViewModel(newAccount));
+        OnPropertyChanged(nameof(Accounts));
     }
 }

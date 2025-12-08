@@ -50,26 +50,26 @@
                             <VisualBrush Visual="{Binding ElementName=mask}"/>
                         </ScrollViewer.OpacityMask>
 
-                        <ItemsControl x:Name="AccountGrid" ItemsSource="{Binding Accounts}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10,10,0,10">
 
-                            <ItemsControl.ItemContainerStyle>
-                                <Style TargetType="ContentPresenter">
-                                    <Setter Property="Margin" Value="10,10,0,0"/>
-                                </Style>
-                            </ItemsControl.ItemContainerStyle>
+                            <ItemsControl x:Name="AccountGrid" ItemsSource="{Binding Accounts}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
 
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Components:AcountDetails Margin="0,0,10,10"/>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Components:AcountDetails Margin="0,0,10,0"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
 
-                        </ItemsControl>
+                            </ItemsControl>
+
+                            <Components:AddAccountElement Command="{Binding AddAccountCommand}"/>
+
+                        </StackPanel>
                     </ScrollViewer>
                 </Grid>
             </Border>
