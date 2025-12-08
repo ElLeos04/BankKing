@@ -1,8 +1,10 @@
 ﻿using BankKing.Data.Account;
 using BankKing.Data.Entry;
+using BankKing.ViewModel.Utils;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace BankKing.ViewModel;
 
@@ -37,9 +39,11 @@ public class AccountViewModel : INotifyPropertyChanged
 
     public string BalanceText => Balance.ToString("C2");
 
-    public ObservableCollection<HistoryEntryViewModel> Entries { get; private set; }
+    private ObservableCollection<HistoryEntryViewModel> Entries { get; set; }
 
     public ICollectionView GroupedEntries { get; private set; }
+
+    public ICommand AddTransactionCommand => new RelayCommand(AddTransaction);
 
 
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -65,6 +69,19 @@ public class AccountViewModel : INotifyPropertyChanged
     // Mock constructor for design-time data
     public AccountViewModel() : this(MockAccount())
     {
+    }
+
+    private void AddTransaction(object param)
+    {
+        AccountEntry newEntry = new AccountEntry()
+        {
+            Amount = 0.0,
+            Date = System.DateTime.Today,
+            Category = new EntryCategory() { Name = "Nouvelle catégorie", Type = EntryType.Expense }
+        };
+
+        Account.Entries.Add(newEntry);
+        Entries.Add(new HistoryEntryViewModel(newEntry));
     }
 
     private static BankAccount MockAccount()
