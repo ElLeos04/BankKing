@@ -1,4 +1,5 @@
 ﻿<UserControl x:Class="BankKing.Interface.Components.InputComponent"
+             x:Name="component"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,6 +10,7 @@
     <Grid d:Background="White">
         <TextBlock FontFamily="{StaticResource AppFontFamily}" Foreground="{DynamicResource DarkAccentBrush}" Text="Nom du champ" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
-        <TextBox Style="{StaticResource TextInput}" Margin="10,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Text=""/>
+        <TextBox Style="{StaticResource TextInput}" Margin="10,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                 Text="{Binding InputText, ElementName=component, UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </UserControl>

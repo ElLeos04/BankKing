@@ -22,5 +22,17 @@ namespace BankKing.Interface.Components
         {
             InitializeComponent();
         }
+
+
+        public string InputText
+        {
+            get { return (string) GetValue(InputTextProperty); }
+            set { SetValue(InputTextProperty, value); }
+        }
+
+        public static readonly DependencyProperty InputTextProperty =
+            DependencyProperty.Register(nameof(InputText), typeof(string), typeof(InputComponent), new PropertyMetadata(string.Empty));
+
+
     }
 }
