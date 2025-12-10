@@ -6,12 +6,20 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
             xmlns:local="clr-namespace:BankKing.Interface.Components"
             xmlns:viewmodel="clr-namespace:BankKing.ViewModel"
-            mc:Ignorable="d" Height="400"
+            mc:Ignorable="d" Height="142"
             Style="{StaticResource AddForm}" d:DataContext="{d:DesignInstance Type=viewmodel:FormViewModel, IsDesignTimeCreatable=True}" >
 
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="158,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <local:InputComponent/>
+        <local:InputComponent Grid.Column="1"/>
     </Grid>
 
 </UserControl>
