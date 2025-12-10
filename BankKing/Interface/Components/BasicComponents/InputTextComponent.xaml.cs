@@ -16,9 +16,9 @@ namespace BankKing.Interface.Components
     /// <summary>
     /// Logique d'interaction pour InputComponent.xaml
     /// </summary>
-    public partial class InputComponent : UserControl
+    public partial class InputTextComponent : UserControl
     {
-        public InputComponent()
+        public InputTextComponent()
         {
             InitializeComponent();
         }
@@ -31,7 +31,7 @@ namespace BankKing.Interface.Components
         }
 
         public static readonly DependencyProperty InputTextProperty =
-            DependencyProperty.Register(nameof(InputText), typeof(string), typeof(InputComponent), new PropertyMetadata(string.Empty));
+            DependencyProperty.Register(nameof(InputText), typeof(string), typeof(InputTextComponent), new PropertyMetadata(string.Empty));
 
 
     }

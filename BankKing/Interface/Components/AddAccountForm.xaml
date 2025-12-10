@@ -18,8 +18,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <local:InputComponent/>
-        <local:InputComponent Grid.Column="1"/>
+        <local:InputTextComponent/>
+        <local:InputTextComponent Grid.Column="1"/>
     </Grid>
 
 </UserControl>
