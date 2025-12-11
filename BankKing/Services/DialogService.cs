@@ -1,4 +1,4 @@
-﻿using BankKing.ViewModel;
+﻿using BankKing.ViewModel.Form;
 
 namespace BankKing.Services;
 
