@@ -1,0 +1,18 @@
+﻿<local:InputComponent 
+            x:Name="component"
+            x:Class="BankKing.Interface.Components.Form.InputNumberComponent"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:local="clr-namespace:BankKing.Interface.Components.Form"
+            mc:Ignorable="d"
+            Height="60" Width="285">
+    <Grid d:Background="Aquamarine">
+        <TextBlock FontFamily="{StaticResource AppFontFamily}" Foreground="{DynamicResource DarkAccentBrush}" Text="{Binding InputName, ElementName=component}" 
+           Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+        <TextBox Style="{StaticResource TextInput}" Margin="10,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
+            Text="{Binding InputNumber, ElementName=component, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="NumberValidationTextBox"/>
+    </Grid>
+</local:InputComponent>

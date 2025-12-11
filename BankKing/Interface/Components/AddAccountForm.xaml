@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
 
         <local:InputTextComponent InputName="Nom"/>
-        <local:InputTextComponent InputName="Montant de départ" Grid.Column="1"/>
+        <local:InputNumberComponent InputName="Montant de départ" Grid.Column="1"/>
     </Grid>
 
 </UserControl>
