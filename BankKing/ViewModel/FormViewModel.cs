@@ -5,8 +5,8 @@ using System.Text;
 
 namespace BankKing.ViewModel
 {
-    public class FormViewModel : INotifyPropertyChanged
+    public abstract class FormViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
+        
     }
 }

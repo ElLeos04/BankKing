@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace BankKing.ViewModel;
 
-public class AccountViewModel : INotifyPropertyChanged
+public class AccountViewModel : BaseViewModel
 {
 
     public BankAccount Account
@@ -45,12 +45,6 @@ public class AccountViewModel : INotifyPropertyChanged
 
     public ICommand AddTransactionCommand => new RelayCommand(AddTransaction);
 
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-    protected void OnPropertyChanged(string name)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-    }
 
     public AccountViewModel(BankAccount account)
     {

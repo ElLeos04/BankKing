@@ -5,7 +5,7 @@ using System.Windows.Media;
 
 namespace BankKing.ViewModel
 {
-    public class HistoryEntryViewModel : INotifyPropertyChanged
+    public class HistoryEntryViewModel : BaseViewModel
     {
         private AccountEntry _accountEntry;
 
@@ -44,12 +44,6 @@ namespace BankKing.ViewModel
         // Mock constructor for design-time data
         public HistoryEntryViewModel() : this(new AccountEntry() { Category = new() { Name = "Category", Type = EntryType.None }, Amount = 12345, Date = DateTime.Today })
         {
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

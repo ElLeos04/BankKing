@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace BankKing.ViewModel;
 
-public class MainWindowViewModel(IAccountService accountService) : INotifyPropertyChanged
+public class MainWindowViewModel(IAccountService accountService) : BaseViewModel
 {
     public ObservableCollection<AccountViewModel> Accounts
     {
@@ -25,13 +25,6 @@ public class MainWindowViewModel(IAccountService accountService) : INotifyProper
     // For design-time data
     public MainWindowViewModel() : this(new AccountService())
     {
-    }
-
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-    protected void OnPropertyChanged(string name)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 
 
