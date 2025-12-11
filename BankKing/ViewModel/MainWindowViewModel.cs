@@ -1,35 +1,26 @@
 ﻿using BankKing.Data.Account;
+using BankKing.Interface.Components;
 using BankKing.Services;
 using BankKing.ViewModel.Utils;
-using System.CodeDom;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 
 namespace BankKing.ViewModel;
 
-public class MainWindowViewModel : INotifyPropertyChanged
+public class MainWindowViewModel(IAccountService accountService) : INotifyPropertyChanged
 {
     public ObservableCollection<AccountViewModel> Accounts
     {
         get;
         private set;
-    }
+    } = [];
 
     public ICommand LoadDataCommand => new RelayCommand(LoadData);
 
     public ICommand SaveDataCommand => new RelayCommand(SaveData);
 
     public ICommand AddAccountCommand => new RelayCommand(AddAccount);
-
-    private readonly IAccountService _accountService;
-
-    public MainWindowViewModel(IAccountService accountService)
-    {
-        _accountService = accountService;
-
-        Accounts = [];
-    }
 
     // For design-time data
     public MainWindowViewModel() : this(new AccountService())
@@ -46,7 +37,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
 
     private void LoadData(object obj)
     {
-        var accounts = _accountService.GetAccounts();
+        var accounts = accountService.GetAccounts();
 
         foreach (var account in accounts)
         {
@@ -61,7 +52,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
         {
             accounts.Add(accountVM.Account);
         }
-        _accountService.SaveAccounts(accounts);
+        accountService.SaveAccounts(accounts);
     }
 
     private void AddAccount(object obj)
