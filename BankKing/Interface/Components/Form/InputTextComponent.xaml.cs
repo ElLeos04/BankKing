@@ -21,7 +21,7 @@ public partial class InputTextComponent : InputComponent
     }
 
     public static readonly DependencyProperty InputTextProperty =
-        DependencyProperty.Register(nameof(InputText), typeof(string), typeof(InputTextComponent), new PropertyMetadata(string.Empty));
+        DependencyProperty.Register(nameof(InputText), typeof(string), typeof(InputTextComponent), new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
 }

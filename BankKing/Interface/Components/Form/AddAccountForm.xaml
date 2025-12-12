@@ -5,9 +5,9 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
             xmlns:local="clr-namespace:BankKing.Interface.Components.Form"
-            xmlns:viewmodel="clr-namespace:BankKing.ViewModel"
+            xmlns:viewmodel="clr-namespace:BankKing.ViewModel.Form"
             mc:Ignorable="d" Height="142"
-            Style="{StaticResource AddForm}" d:DataContext="{d:DesignInstance Type=viewmodel:FormViewModel, IsDesignTimeCreatable=True}" >
+            Style="{StaticResource AddForm}" d:DataContext="{d:DesignInstance Type=viewmodel:AddAccountViewModel, IsDesignTimeCreatable=True}" >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -18,8 +18,10 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <local:InputTextComponent InputName="Nom"/>
-        <local:InputNumberComponent InputName="Montant de départ" Grid.Column="1"/>
+        <local:InputTextComponent InputName="Nom" 
+                                  InputText="{Binding AccountTitle}"/>
+        <local:InputNumberComponent InputName="Montant de départ" Grid.Column="1" 
+                                    InputNumber="{Binding InitialBalance}"/>
     </Grid>
 
 </UserControl>

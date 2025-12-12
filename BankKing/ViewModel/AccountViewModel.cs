@@ -27,7 +27,7 @@ public class AccountViewModel : BaseViewModel
         }
     }
 
-    public double Balance
+    public decimal Balance
     {
         get => Account.Balance;
         set
@@ -83,7 +83,7 @@ public class AccountViewModel : BaseViewModel
         var account = new BankAccount()
         {
             Name = "Compte courant",
-            Balance = 1523.45,
+            Balance = 1523.45m,
             Entries = []
         };
 

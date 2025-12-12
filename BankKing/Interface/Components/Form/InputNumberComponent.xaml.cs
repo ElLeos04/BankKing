@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -19,9 +21,6 @@ namespace BankKing.Interface.Components.Form
     /// </summary>
     public partial class InputNumberComponent : InputComponent
     {
-        [GeneratedRegex("[^0-9]+")]
-        private static partial Regex NumberRegex();
-
 
         public InputNumberComponent()
         {
@@ -35,12 +34,22 @@ namespace BankKing.Interface.Components.Form
         }
 
         public static readonly DependencyProperty InputNumberProperty =
-            DependencyProperty.Register(nameof(InputNumber), typeof(decimal), typeof(InputNumberComponent), new PropertyMetadata(0m));
+            DependencyProperty.Register(nameof(InputNumber), typeof(decimal), typeof(InputNumberComponent), new FrameworkPropertyMetadata(0m, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = NumberRegex().IsMatch(e.Text);
+            TextBox? textBox = sender as TextBox;
+
+            string currentText = textBox!.Text;
+            string futureText = currentText.Insert(textBox.CaretIndex, e.Text);
+
+            Regex regex = new Regex(@"^[0-9]*[.,]?[0-9]*$");
+
+            if (!regex.IsMatch(futureText))
+            {
+                e.Handled = true;
+            }
         }
 
 

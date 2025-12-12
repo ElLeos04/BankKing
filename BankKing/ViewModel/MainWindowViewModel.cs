@@ -1,14 +1,14 @@
 ﻿using BankKing.Data.Account;
-using BankKing.Interface.Components;
 using BankKing.Services;
+using BankKing.ViewModel.Form;
 using BankKing.ViewModel.Utils;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows.Input;
 
 namespace BankKing.ViewModel;
 
-public class MainWindowViewModel(IAccountService accountService) : BaseViewModel
+public class MainWindowViewModel(IAccountService _accountService, IDialogService _dialogService) : BaseViewModel
 {
     public ObservableCollection<AccountViewModel> Accounts
     {
@@ -22,15 +22,9 @@ public class MainWindowViewModel(IAccountService accountService) : BaseViewModel
 
     public ICommand AddAccountCommand => new RelayCommand(AddAccount);
 
-    // For design-time data
-    public MainWindowViewModel() : this(new AccountService())
-    {
-    }
-
-
     private void LoadData(object obj)
     {
-        var accounts = accountService.GetAccounts();
+        var accounts = _accountService.GetAccounts();
 
         foreach (var account in accounts)
         {
@@ -45,15 +39,28 @@ public class MainWindowViewModel(IAccountService accountService) : BaseViewModel
         {
             accounts.Add(accountVM.Account);
         }
-        accountService.SaveAccounts(accounts);
+        _accountService.SaveAccounts(accounts);
     }
 
     private void AddAccount(object obj)
     {
-        // For demo purposes, we create a mock account
-        BankAccount newAccount = new() { Name = "Compte" + Random.Shared.Next(), Balance = 50 };
+        AddAccountViewModel addAccountVM = new();
 
-        Accounts.Add(new AccountViewModel(newAccount));
-        OnPropertyChanged(nameof(Accounts));
+        bool result = _dialogService.ShowDialog(addAccountVM);
+
+        if (result)
+        {
+            Trace.WriteLine($"Adding account: {addAccountVM.AccountTitle} with initial balance {addAccountVM.InitialBalance}"); 
+
+            BankAccount newAccount = new()
+            {
+                Name = addAccountVM.AccountTitle,
+                Balance = addAccountVM.InitialBalance,
+                Entries = []
+            };
+
+            Accounts.Add(new AccountViewModel(newAccount));
+            OnPropertyChanged(nameof(Accounts));
+        }
     }
 }
