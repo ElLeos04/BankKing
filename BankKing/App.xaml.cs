@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System.Globalization;
 using System.Windows;
+using System.Windows.Markup;
 
 namespace BankKing
 {
@@ -8,7 +10,7 @@ namespace BankKing
     /// </summary>
     public partial class App : Application
     {
-        private ServiceProvider _serviceProvider;
+        private readonly ServiceProvider _serviceProvider;
 
         public App()
         {
@@ -16,6 +18,7 @@ namespace BankKing
 
             // Register Services
             services.AddSingleton<Services.IAccountService, Services.AccountService>();
+            services.AddSingleton<Services.IDialogService, Services.DialogService>();
 
             // Register ViewModel
             services.AddTransient<ViewModel.MainWindowViewModel>();
@@ -24,6 +27,11 @@ namespace BankKing
             services.AddSingleton<MainWindow>();
 
             _serviceProvider = services.BuildServiceProvider();
+
+            FrameworkElement.LanguageProperty.OverrideMetadata(
+            typeof(FrameworkElement),
+            new FrameworkPropertyMetadata(
+                XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
         }
 
         protected override async void OnStartup(StartupEventArgs e)

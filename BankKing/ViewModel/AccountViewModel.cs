@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace BankKing.ViewModel;
 
-public class AccountViewModel : INotifyPropertyChanged
+public class AccountViewModel : BaseViewModel
 {
 
     public BankAccount Account
@@ -27,7 +27,7 @@ public class AccountViewModel : INotifyPropertyChanged
         }
     }
 
-    public double Balance
+    public decimal Balance
     {
         get => Account.Balance;
         set
@@ -45,12 +45,6 @@ public class AccountViewModel : INotifyPropertyChanged
 
     public ICommand AddTransactionCommand => new RelayCommand(AddTransaction);
 
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-    protected void OnPropertyChanged(string name)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-    }
 
     public AccountViewModel(BankAccount account)
     {
@@ -89,7 +83,7 @@ public class AccountViewModel : INotifyPropertyChanged
         var account = new BankAccount()
         {
             Name = "Compte courant",
-            Balance = 1523.45,
+            Balance = 1523.45m,
             Entries = []
         };
 

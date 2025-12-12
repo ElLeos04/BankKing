@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="/Resources/ScrollPanel.xaml"/>
                 <ResourceDictionary Source="/Resources/HistoryItem.xaml"/>
                 <ResourceDictionary Source="/Resources/AccountHistory.xaml"/>
+                <ResourceDictionary Source="/Resources/Form.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
