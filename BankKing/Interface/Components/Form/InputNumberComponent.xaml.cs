@@ -44,7 +44,7 @@ namespace BankKing.Interface.Components.Form
             string currentText = textBox!.Text;
             string futureText = currentText.Insert(textBox.CaretIndex, e.Text);
 
-            Regex regex = new Regex(@"^\d*[.,]?\d{0,2}$");
+            Regex regex = new Regex(@"^-?\d*[.,]?\d{0,2}$");
 
             if (!regex.IsMatch(futureText))
             {

@@ -50,8 +50,6 @@ public class MainWindowViewModel(IAccountService _accountService, IDialogService
 
         if (result)
         {
-            Trace.WriteLine($"Adding account: {addAccountVM.AccountTitle} with initial balance {addAccountVM.InitialBalance}"); 
-
             BankAccount newAccount = new()
             {
                 Name = addAccountVM.AccountTitle,
