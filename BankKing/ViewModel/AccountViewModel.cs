@@ -1,5 +1,7 @@
 ﻿using BankKing.Data.Account;
 using BankKing.Data.Entry;
+using BankKing.Services;
+using BankKing.ViewModel.Form;
 using BankKing.ViewModel.Utils;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -10,6 +12,7 @@ namespace BankKing.ViewModel;
 
 public class AccountViewModel : BaseViewModel
 {
+    private IDialogService _dialogService;
 
     public BankAccount Account
     {
@@ -46,8 +49,9 @@ public class AccountViewModel : BaseViewModel
     public ICommand AddTransactionCommand => new RelayCommand(AddTransaction);
 
 
-    public AccountViewModel(BankAccount account)
+    public AccountViewModel(IDialogService dialog, BankAccount account)
     {
+        _dialogService = dialog;
         Account = account;
 
         Entries = [];
@@ -61,12 +65,15 @@ public class AccountViewModel : BaseViewModel
     }
 
     // Mock constructor for design-time data
-    public AccountViewModel() : this(MockAccount())
+    public AccountViewModel() : this(null, MockAccount())
     {
     }
 
     private void AddTransaction(object param)
     {
+        AddTransactionViewModel addTransactionVM = new();
+        _dialogService.ShowDialog(addTransactionVM);
+
         AccountEntry newEntry = new AccountEntry()
         {
             Amount = 0.0,
@@ -74,7 +81,7 @@ public class AccountViewModel : BaseViewModel
             Category = new EntryCategory() { Name = "Nouvelle catégorie", Type = EntryType.Expense }
         };
 
-        Account.Entries.Add(newEntry);
+        //Account.Entries.Add(newEntry);
         Entries.Add(new HistoryEntryViewModel(newEntry));
     }
 

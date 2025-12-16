@@ -20,6 +20,9 @@ namespace BankKing
             services.AddSingleton<Services.IAccountService, Services.AccountService>();
             services.AddSingleton<Services.IDialogService, Services.DialogService>();
 
+            // Register Factory
+            services.AddSingleton<ViewModel.Factory.IViewModelFactory, ViewModel.Factory.ViewModelFactory>();
+
             // Register ViewModel
             services.AddTransient<ViewModel.MainWindowViewModel>();
 
