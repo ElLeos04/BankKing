@@ -6,6 +6,7 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
             xmlns:local="clr-namespace:BankKing.Interface.Components.Form"
             xmlns:viewmodel="clr-namespace:BankKing.ViewModel.Form"
+            xmlns:dataEntry="clr-namespace:BankKing.Data.Entry"
             mc:Ignorable="d" 
             Height="202"
             Style="{StaticResource AddForm}"
@@ -21,12 +22,14 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <local:InputTextComponent InputName="Nom"
-                                  Grid.Row="0" Grid.Column="0" />
-        <local:InputNumberComponent InputName="Montant de départ"
+        <local:InputRadioButton InputName="Type"
+                                Grid.Row="0" Grid.Column="0"
+                                LeftButtonText="Dépense" LeftButton="{x:Static dataEntry:EntryType.Expense}"
+                                RightButtonText="Revenu" RightButton="{x:Static dataEntry:EntryType.Income}" />
+        <local:InputComboBox InputName="Montant de départ"
                                     Grid.Row="0" Grid.Column="1" />
 
-        <local:InputTextComponent InputName="Nom" InputText="{Binding AccountTitle}"
+        <local:InputTextComponent InputName="Nom"
                                   Grid.Row="1" Grid.Column="0" />
         <local:InputNumberComponent InputName="Montant de départ"
                                     Grid.Row="1" Grid.Column="1" />
