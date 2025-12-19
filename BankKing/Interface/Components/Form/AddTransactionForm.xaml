@@ -26,10 +26,10 @@
                                 Grid.Row="0" Grid.Column="0"
                                 LeftButtonText="Dépense" LeftButton="{x:Static dataEntry:EntryType.Expense}"
                                 RightButtonText="Revenu" RightButton="{x:Static dataEntry:EntryType.Income}" />
-        <local:InputComboBox InputName="Montant de départ"
+        <local:InputComboBox InputName="Catégorie"
                                     Grid.Row="0" Grid.Column="1" />
 
-        <local:InputTextComponent InputName="Nom"
+        <local:InputNumberComponent InputName="Quantité"
                                   Grid.Row="1" Grid.Column="0" />
         <local:InputNumberComponent InputName="Montant de départ"
                                     Grid.Row="1" Grid.Column="1" />
