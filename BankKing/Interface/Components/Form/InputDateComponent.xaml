@@ -14,7 +14,7 @@
             Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
         <DatePicker Style="{StaticResource DateInput}" Margin="10,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
-                    SelectedDate="{Binding Date, ElementName=component, UpdateSourceTrigger=PropertyChanged}"/>
+                    SelectedDate="{Binding InputDate, ElementName=component, UpdateSourceTrigger=PropertyChanged}"/>
 
     </Grid>
 </local:InputComponent>
