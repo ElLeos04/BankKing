@@ -31,7 +31,7 @@
 
         <local:InputNumberComponent InputName="Quantité"
                                   Grid.Row="1" Grid.Column="0" />
-        <local:InputNumberComponent InputName="Montant de départ"
+        <local:InputDateComponent InputName="Date"
                                     Grid.Row="1" Grid.Column="1" />
 
     </Grid>
