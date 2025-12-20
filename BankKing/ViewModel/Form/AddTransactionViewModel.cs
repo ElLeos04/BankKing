@@ -1,10 +1,12 @@
 ﻿using BankKing.Data.Entry;
+using BankKing.Services;
+using System.Diagnostics;
 
 namespace BankKing.ViewModel.Form;
 
-public class AddTransactionViewModel : FormViewModel
+public class AddTransactionViewModel(ICategoryService categoryService) : FormViewModel
 {
-    private EntryType _transactionType;
+    private EntryType _transactionType = EntryType.ExpenseAndIncome;
     public EntryType TransactionType
     {
         get => _transactionType;
@@ -46,5 +48,15 @@ public class AddTransactionViewModel : FormViewModel
             _date = value;
             OnPropertyChanged(nameof(Date));
         }
+    }
+
+    private List<EntryCategory> GetDisplayedCategories()
+    {
+        return TransactionType switch
+        {
+            EntryType.Expense => categoryService.GetExpenses(),
+            EntryType.Income => categoryService.GetIncomes(),
+            _ => categoryService.GetAllCategories(),
+        };
     }
 }

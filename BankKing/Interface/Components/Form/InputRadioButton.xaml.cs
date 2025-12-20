@@ -45,7 +45,7 @@ public partial class InputRadioButton : InputComponent
 
 
     public static readonly DependencyProperty SelectedValueProperty =
-            DependencyProperty.Register(nameof(SelectedValue), typeof(object), typeof(InputRadioButton), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(SelectedValue), typeof(object), typeof(InputRadioButton), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
     public static readonly DependencyProperty LeftButtonProperty =
         DependencyProperty.Register(nameof(LeftButton), typeof(object), typeof(InputRadioButton), new PropertyMetadata(null));

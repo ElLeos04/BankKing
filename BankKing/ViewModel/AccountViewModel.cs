@@ -3,6 +3,7 @@ using BankKing.Data.Entry;
 using BankKing.Services;
 using BankKing.ViewModel.Form;
 using BankKing.ViewModel.Utils;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Data;
@@ -71,8 +72,8 @@ public class AccountViewModel : BaseViewModel
 
     private void AddTransaction(object param)
     {
-        AddTransactionViewModel addTransactionVM = new();
-        _dialogService.ShowDialog(addTransactionVM);
+        AddTransactionViewModel? addTransactionVM = App.Current.Services.GetService<AddTransactionViewModel>();
+        _dialogService.ShowDialog(addTransactionVM!);
 
         AccountEntry newEntry = new AccountEntry()
         {

@@ -22,7 +22,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <local:InputRadioButton InputName="Type"
+        <local:InputRadioButton InputName="Type" SelectedValue="{Binding TransactionType}"
                                 Grid.Row="0" Grid.Column="0"
                                 LeftButtonText="Dépense" LeftButton="{x:Static dataEntry:EntryType.Expense}"
                                 RightButtonText="Revenu" RightButton="{x:Static dataEntry:EntryType.Income}" />

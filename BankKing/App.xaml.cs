@@ -10,7 +10,11 @@ namespace BankKing
     /// </summary>
     public partial class App : Application
     {
-        private readonly ServiceProvider _serviceProvider;
+        private readonly IServiceProvider _serviceProvider;
+        public IServiceProvider Services
+        {
+            get => _serviceProvider;
+        }
 
         public App()
         {
@@ -26,6 +30,7 @@ namespace BankKing
 
             // Register ViewModel
             services.AddTransient<ViewModel.MainWindowViewModel>();
+            services.AddTransient<ViewModel.Form.AddTransactionViewModel>();
 
             // Register Window
             services.AddSingleton<MainWindow>();
@@ -46,6 +51,8 @@ namespace BankKing
 
             base.OnStartup(e);
         }
+
+        public new static App Current => (App) Application.Current;
     }
 
 }
