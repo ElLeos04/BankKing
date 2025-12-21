@@ -14,6 +14,7 @@ public class AddTransactionViewModel(ICategoryService categoryService) : FormVie
         {
             _transactionType = value;
             OnPropertyChanged(nameof(TransactionType));
+            OnPropertyChanged(nameof(DisplayedCategories));
         }
     }
 
@@ -27,6 +28,9 @@ public class AddTransactionViewModel(ICategoryService categoryService) : FormVie
             OnPropertyChanged(nameof(Category));
         }
     }
+
+    public List<EntryCategory> DisplayedCategories => GetDisplayedCategories();
+
 
     private decimal _amount = 0m;
     public decimal Amount

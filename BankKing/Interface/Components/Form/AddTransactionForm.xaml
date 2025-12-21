@@ -27,7 +27,8 @@
                                 LeftButtonText="Dépense" LeftButton="{x:Static dataEntry:EntryType.Expense}"
                                 RightButtonText="Revenu" RightButton="{x:Static dataEntry:EntryType.Income}" />
         <local:InputComboBox InputName="Catégorie"
-                                    Grid.Row="0" Grid.Column="1" />
+                             Grid.Row="0" Grid.Column="1"
+                             InputList="{Binding DisplayedCategories}"/>
 
         <local:InputNumberComponent InputName="Quantité"
                                   Grid.Row="1" Grid.Column="0" />

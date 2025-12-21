@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using System.Windows;
 
 namespace BankKing.Interface.Components.Form;
@@ -14,15 +14,25 @@ public partial class InputComboBox : InputComponent
     }
 
 
-    public List<object> InputList
+    public IEnumerable InputList
     {
         get { return (List<object>) GetValue(InputListProperty); }
         set { SetValue(InputListProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for InputList.  This enables animation, styling, binding, etc...
+    public object SelectedInput
+    {
+        get { return (object) GetValue(SelectedInputProperty); }
+        set { SetValue(SelectedInputProperty, value); }
+    }
+
+
     public static readonly DependencyProperty InputListProperty =
-        DependencyProperty.Register(nameof(InputList), typeof(List<object>), typeof(InputComboBox), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        DependencyProperty.Register(nameof(InputList), typeof(IEnumerable), typeof(InputComboBox), new FrameworkPropertyMetadata(null));
+
+    public static readonly DependencyProperty SelectedInputProperty =
+        DependencyProperty.Register(nameof(SelectedInput), typeof(object), typeof(InputComboBox), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
 
 
 }
