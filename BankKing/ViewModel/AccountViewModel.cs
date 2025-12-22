@@ -88,8 +88,16 @@ public class AccountViewModel : BaseViewModel
             Account.Entries.Add(newEntry);
             Entries.Add(new HistoryEntryViewModel(newEntry));
 
-            OnPropertyChanged(nameof(Balance));
+            ComputeBalanceChange(newEntry);
         }
+    }
+
+    private void ComputeBalanceChange(AccountEntry entry)
+    {
+        Account.Balance += entry.Amount;
+
+
+        OnPropertyChanged(nameof(BalanceText));
     }
 
     private static BankAccount MockAccount()
