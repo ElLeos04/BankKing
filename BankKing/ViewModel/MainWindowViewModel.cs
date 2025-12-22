@@ -1,5 +1,6 @@
 ﻿using BankKing.Data.Account;
 using BankKing.Services;
+using BankKing.ViewModel.Factory;
 using BankKing.ViewModel.Form;
 using BankKing.ViewModel.Utils;
 using System.Collections.ObjectModel;
@@ -8,7 +9,7 @@ using System.Windows.Input;
 
 namespace BankKing.ViewModel;
 
-public class MainWindowViewModel(IAccountService _accountService, IDialogService _dialogService) : BaseViewModel
+public class MainWindowViewModel(IAccountService _accountService, IDialogService _dialogService, IViewModelFactory _vmFactory) : BaseViewModel
 {
     public ObservableCollection<AccountViewModel> Accounts
     {
@@ -28,7 +29,7 @@ public class MainWindowViewModel(IAccountService _accountService, IDialogService
 
         foreach (var account in accounts)
         {
-            Accounts.Add(new(account));
+            Accounts.Add(_vmFactory.CreateAccountViewModel(account));
         }
     }
 
@@ -57,7 +58,7 @@ public class MainWindowViewModel(IAccountService _accountService, IDialogService
                 Entries = []
             };
 
-            Accounts.Add(new AccountViewModel(newAccount));
+            Accounts.Add(_vmFactory.CreateAccountViewModel(newAccount));
             OnPropertyChanged(nameof(Accounts));
         }
     }

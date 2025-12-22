@@ -9,7 +9,8 @@ namespace BankKing.ViewModel
     {
         private AccountEntry _accountEntry;
 
-        public string Date => _accountEntry.Date.ToShortDateString();
+        public DateTime Date => _accountEntry.Date;
+        public string DateText => _accountEntry.Date.ToShortDateString();
 
 
         public string CategoryName => _accountEntry.Category.Name;

@@ -34,7 +34,6 @@ namespace BankKing.Data
                 if (serializer.Deserialize(fileStream) is BankAccount account)
                 {
                     accounts.Add(account);
-                    account.Entries.Sort((a, b) => b.Date.CompareTo(a.Date));
                 }
 
             }

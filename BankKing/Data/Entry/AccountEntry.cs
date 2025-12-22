@@ -7,7 +7,7 @@ namespace BankKing.Data.Entry
     public class AccountEntry
     {
         public required EntryCategory Category { get; set; }
-        public double Amount { get; set; }
+        public decimal Amount { get; set; }
         public DateTime Date { get; set; }
     }
 }

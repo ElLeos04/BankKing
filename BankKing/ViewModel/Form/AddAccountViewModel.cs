@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace BankKing.ViewModel.Form;
+﻿namespace BankKing.ViewModel.Form;
 
 public class AddAccountViewModel : FormViewModel
 {
