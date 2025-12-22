@@ -49,4 +49,11 @@ public class CategoryService : ICategoryService
 
         return [.. incomes];
     }
+
+    public void AddCategory(EntryCategory category)
+    {
+        _categories.Add(category);
+
+        // TODO : Persist to file
+    }
 }

@@ -9,4 +9,6 @@ public interface ICategoryService
     List<EntryCategory> GetExpenses();
 
     List<EntryCategory> GetIncomes();
+
+    void AddCategory(EntryCategory category);
 }
