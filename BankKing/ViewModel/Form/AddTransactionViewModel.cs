@@ -1,6 +1,5 @@
 ﻿using BankKing.Data.Entry;
 using BankKing.Services;
-using System.Diagnostics;
 
 namespace BankKing.ViewModel.Form;
 
@@ -43,7 +42,7 @@ public class AddTransactionViewModel(ICategoryService categoryService) : FormVie
         }
     }
 
-    private DateTime? _date;
+    private DateTime? _date = DateTime.Today;
     public DateTime? Date
     {
         get => _date;

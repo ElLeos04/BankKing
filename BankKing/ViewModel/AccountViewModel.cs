@@ -13,7 +13,7 @@ namespace BankKing.ViewModel;
 
 public class AccountViewModel : BaseViewModel
 {
-    private IDialogService _dialogService;
+    private readonly IDialogService _dialogService;
 
     public BankAccount Account
     {
@@ -62,7 +62,8 @@ public class AccountViewModel : BaseViewModel
         }
 
         GroupedEntries = CollectionViewSource.GetDefaultView(Entries);
-        GroupedEntries.GroupDescriptions.Add(new PropertyGroupDescription("Date"));
+        GroupedEntries.GroupDescriptions.Add(new PropertyGroupDescription("DateText"));
+        GroupedEntries.SortDescriptions.Add(new SortDescription("Date", ListSortDirection.Descending));
     }
 
     // Mock constructor for design-time data
@@ -73,17 +74,22 @@ public class AccountViewModel : BaseViewModel
     private void AddTransaction(object param)
     {
         AddTransactionViewModel? addTransactionVM = App.Current.Services.GetService<AddTransactionViewModel>();
-        _dialogService.ShowDialog(addTransactionVM!);
+        bool result = _dialogService.ShowDialog(addTransactionVM!);
 
-        AccountEntry newEntry = new AccountEntry()
+        if (result)
         {
-            Amount = 0.0,
-            Date = System.DateTime.Today,
-            Category = new EntryCategory() { Name = "Nouvelle catégorie", Type = EntryType.Expense }
-        };
+            AccountEntry newEntry = new()
+            {
+                Amount = addTransactionVM!.Amount,
+                Date = addTransactionVM.Date!.Value,
+                Category = addTransactionVM.Category!
+            };
 
-        //Account.Entries.Add(newEntry);
-        Entries.Add(new HistoryEntryViewModel(newEntry));
+            Account.Entries.Add(newEntry);
+            Entries.Add(new HistoryEntryViewModel(newEntry));
+
+            OnPropertyChanged(nameof(Balance));
+        }
     }
 
     private static BankAccount MockAccount()
@@ -97,7 +103,7 @@ public class AccountViewModel : BaseViewModel
 
         AccountEntry e1 = new AccountEntry()
         {
-            Amount = -50.75,
+            Amount = -50.75m,
             Date = System.DateTime.Today.AddDays(-2),
             Category = new EntryCategory() { Name = "Nourriture", Type = EntryType.Expense }
         };
@@ -105,20 +111,20 @@ public class AccountViewModel : BaseViewModel
         account.Entries.Add(e1);
         account.Entries.Add(new AccountEntry()
         {
-            Amount = 2500.00,
+            Amount = 2500.00m,
             Date = System.DateTime.Today.AddDays(-2),
             Category = new EntryCategory() { Name = "Salaire", Type = EntryType.Income }
         });
 
         account.Entries.Add(new AccountEntry()
         {
-            Amount = -150.00,
+            Amount = -150.00m,
             Date = System.DateTime.Today.AddDays(-1),
             Category = new EntryCategory() { Name = "Impôts", Type = EntryType.Expense }
         });
         account.Entries.Add(new AccountEntry()
         {
-            Amount = -23.40,
+            Amount = -23.40m,
             Date = System.DateTime.Today.AddDays(-7),
             Category = new EntryCategory() { Name = "Nourriture", Type = EntryType.Expense }
         });
