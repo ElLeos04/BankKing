@@ -9,7 +9,21 @@ public class CategoryService : ICategoryService
 
     public CategoryService()
     {
-        _categories = [];
+        _categories = [
+            new () {
+                Name = "Nourriture",
+                Type = EntryType.Expense
+            },
+            new () {
+                Name = "Salaire",
+                Type = EntryType.Income
+            },
+            new(){
+                Name = "Loisirs",
+                Type = EntryType.Expense
+            }
+
+            ];
     }
 
 
