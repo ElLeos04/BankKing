@@ -31,9 +31,11 @@
 
 
                     <Grid Margin="0,200,0,0">
+                        <!-- TODO : Faire le changement de vue
                         <Components:ImageButton ButtonText="Comptes" ImageSource="/Resources/Icons/account.png" VerticalAlignment="Top" Margin="0,150,0,0" Command="{Binding SaveDataCommand}"/>
                         <Components:ImageButton ButtonText="Épargnes" ImageSource="/Resources/Icons/savings.png" VerticalAlignment="Top" Margin="0,247,0,0"/>
-                        <Components:ImageButton ButtonText="Gestion" ImageSource="/Resources/Icons/parameters.png" VerticalAlignment="Top" Margin="0,344,0,0" Command="{Binding AddCategoryCommand}"/>
+                        -->
+                        <Components:ImageButton ButtonText="Ajout Catégorie" ImageSource="/Resources/Icons/parameters.png" VerticalAlignment="Top" Margin="0,344,0,0" Command="{Binding AddCategoryCommand}"/>
                     </Grid>
                 </Grid>
             </Border>
