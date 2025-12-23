@@ -15,8 +15,9 @@
 
         <ComboBox Style="{StaticResource RoundedComboBoxStyle}" Margin="10,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
                   ItemsSource="{Binding InputList, ElementName=component}"
-                  SelectedItem="{Binding SelectedInput, ElementName=component, UpdateSourceTrigger=PropertyChanged}"/>
-
+                  SelectedItem="{Binding SelectedInput, ElementName=component, UpdateSourceTrigger=PropertyChanged}"
+                  ItemTemplate="{Binding ItemTemplate, ElementName=component}"
+                  DisplayMemberPath="{Binding DisplayMemberPath, ElementName=component}" />
 
     </Grid>
 

@@ -26,6 +26,18 @@ public partial class InputComboBox : InputComponent
         set { SetValue(SelectedInputProperty, value); }
     }
 
+    public DataTemplate ItemTemplate
+    {
+        get { return (DataTemplate) GetValue(ItemTemplateProperty); }
+        set { SetValue(ItemTemplateProperty, value); }
+    }
+
+    public string DisplayMemberPath
+    {
+        get { return (string) GetValue(DisplayMemberPathProperty); }
+        set { SetValue(DisplayMemberPathProperty, value); }
+    }
+
 
     public static readonly DependencyProperty InputListProperty =
         DependencyProperty.Register(nameof(InputList), typeof(IEnumerable), typeof(InputComboBox), new FrameworkPropertyMetadata(null));
@@ -33,6 +45,9 @@ public partial class InputComboBox : InputComponent
     public static readonly DependencyProperty SelectedInputProperty =
         DependencyProperty.Register(nameof(SelectedInput), typeof(object), typeof(InputComboBox), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
+    public static readonly DependencyProperty ItemTemplateProperty =
+        DependencyProperty.Register(nameof(ItemTemplate), typeof(DataTemplate), typeof(InputComboBox), new PropertyMetadata(null));
 
-
+    public static readonly DependencyProperty DisplayMemberPathProperty =
+        DependencyProperty.Register(nameof(DisplayMemberPath), typeof(string), typeof(InputComboBox), new PropertyMetadata(null));
 }
