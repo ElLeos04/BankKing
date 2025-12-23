@@ -6,10 +6,15 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
             xmlns:local="clr-namespace:BankKing.Interface.Components.Form"
             xmlns:viewmodel="clr-namespace:BankKing.ViewModel.Form"
+            xmlns:utils="clr-namespace:BankKing.Interface.Utils"
             mc:Ignorable="d"
             Height="142"
             Style="{StaticResource AddForm}"
             d:DataContext="{d:DesignInstance Type=viewmodel:AddCategoryViewModel, IsDesignTimeCreatable=True}">
+
+    <UserControl.Resources>
+        <utils:EnumDescriptionConverter x:Key="EnumConverter"/>
+    </UserControl.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -26,6 +31,13 @@
         <local:InputComboBox InputName="Type de la catégorie"
                              Grid.Row="0" Grid.Column="1"
                              InputList="{Binding EntryTypes}"
-                             SelectedInput="{Binding Type}"/>
+                             SelectedInput="{Binding Type}">
+            <local:InputComboBox.ItemTemplate>
+                <DataTemplate>
+                    <!-- Form decides to use the converter here -->
+                    <TextBlock Text="{Binding Converter={StaticResource EnumConverter}}"/>
+                </DataTemplate>
+            </local:InputComboBox.ItemTemplate>
+        </local:InputComboBox>
     </Grid>
 </UserControl>
