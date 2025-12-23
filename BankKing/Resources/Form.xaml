@@ -16,6 +16,10 @@
         <form:AddTransactionForm />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:AddCategoryViewModel}">
+        <form:AddCategoryForm />
+    </DataTemplate>
+
     <Style x:Key="AddForm" TargetType="UserControl">
         <Setter Property="Width" Value="600"/>
 

@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
-namespace BankKing.Data.Entry
+namespace BankKing.Data.Entry;
+
+public enum EntryType
 {
-    public enum EntryType
-    {
-        None,
-        Expense,
-        Income,
-        ExpenseAndIncome
-    }
+    None,
+    [Description("Dépense")]
+    Expense,
+    [Description("Revenu")]
+    Income,
+    [Description("Dépense ou Revenu")]
+    ExpenseAndIncome
 }

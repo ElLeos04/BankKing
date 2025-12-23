@@ -1,4 +1,5 @@
 ﻿using BankKing.Data.Account;
+using BankKing.Data.Entry;
 using BankKing.Services;
 using BankKing.ViewModel.Factory;
 using BankKing.ViewModel.Form;
@@ -9,7 +10,7 @@ using System.Windows.Input;
 
 namespace BankKing.ViewModel;
 
-public class MainWindowViewModel(IAccountService _accountService, IDialogService _dialogService, IViewModelFactory _vmFactory) : BaseViewModel
+public class MainWindowViewModel(IAccountService _accountService, IDialogService _dialogService, ICategoryService _categoryService, IViewModelFactory _vmFactory) : BaseViewModel
 {
     public ObservableCollection<AccountViewModel> Accounts
     {
@@ -22,6 +23,8 @@ public class MainWindowViewModel(IAccountService _accountService, IDialogService
     public ICommand SaveDataCommand => new RelayCommand(SaveData);
 
     public ICommand AddAccountCommand => new RelayCommand(AddAccount);
+
+    public ICommand AddCategoryCommand => new RelayCommand(AddCategory);
 
     private void LoadData(object obj)
     {
@@ -60,6 +63,22 @@ public class MainWindowViewModel(IAccountService _accountService, IDialogService
 
             Accounts.Add(_vmFactory.CreateAccountViewModel(newAccount));
             OnPropertyChanged(nameof(Accounts));
+        }
+    }
+
+    private void AddCategory(object obj)
+    {
+        AddCategoryViewModel addCategoryVM = new();
+        bool result = _dialogService.ShowDialog(addCategoryVM);
+        if (result)
+        {
+            EntryCategory newCategory = new()
+            {
+                Name = addCategoryVM.CategoryName,
+                Type = addCategoryVM.Type
+            };
+
+            _categoryService.AddCategory(newCategory);
         }
     }
 }
