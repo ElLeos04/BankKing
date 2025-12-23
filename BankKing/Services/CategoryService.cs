@@ -1,31 +1,17 @@
-﻿using BankKing.Data.Entry;
+﻿using BankKing.Data;
+using BankKing.Data.Entry;
 using System.Linq;
 
 namespace BankKing.Services;
 
-public class CategoryService : ICategoryService
+public class CategoryService(ICategoryIO categoryIO) : ICategoryService
 {
-    private List<EntryCategory> _categories;
+    private List<EntryCategory> _categories = [];
 
-    public CategoryService()
+    public void Setup()
     {
-        _categories = [
-            new () {
-                Name = "Nourriture",
-                Type = EntryType.Expense
-            },
-            new () {
-                Name = "Salaire",
-                Type = EntryType.Income
-            },
-            new(){
-                Name = "Loisirs",
-                Type = EntryType.Expense
-            }
-
-            ];
+        _categories = categoryIO.GetCategories();
     }
-
 
     public List<EntryCategory> GetAllCategories()
     {
@@ -54,6 +40,6 @@ public class CategoryService : ICategoryService
     {
         _categories.Add(category);
 
-        // TODO : Persist to file
+        categoryIO.SaveCategories(_categories);
     }
 }

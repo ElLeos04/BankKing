@@ -14,11 +14,16 @@ public class CategoryIO : ICategoryIO
     {
         CheckFolder();
 
-        string file = Directory.GetFiles(FOLDER_PATH, "Categories.xml").First();
+        string[] files = Directory.GetFiles(FOLDER_PATH, "Categories.xml");
 
-        XmlSerializer serializer = new(typeof(EntryCategory));
+        if (files.Length == 0)
+        {
+            return [];
+        }
 
-        using FileStream fileStream = new(file, FileMode.Open);
+        XmlSerializer serializer = new(typeof(List<EntryCategory>));
+
+        using FileStream fileStream = new(files.First(), FileMode.Open);
         if (serializer.Deserialize(fileStream) is List<EntryCategory> categories)
         {
             return categories;
@@ -31,7 +36,7 @@ public class CategoryIO : ICategoryIO
     {
         CheckFolder();
 
-        XmlSerializer serializer = new XmlSerializer(typeof(EntryCategory));
+        XmlSerializer serializer = new XmlSerializer(typeof(List<EntryCategory>));
         string filePath = FOLDER_PATH + "Categories.xml";
 
 

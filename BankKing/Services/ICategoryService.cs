@@ -4,6 +4,8 @@ namespace BankKing.Services;
 
 public interface ICategoryService
 {
+    void Setup();
+
     List<EntryCategory> GetAllCategories();
 
     List<EntryCategory> GetExpenses();
