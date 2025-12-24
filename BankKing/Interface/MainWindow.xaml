@@ -8,7 +8,8 @@
         xmlns:Components="clr-namespace:BankKing.Interface.Components" x:Class="BankKing.MainWindow"
         xmlns:vm="clr-namespace:BankKing.ViewModel"
         mc:Ignorable="d" x:Name="window"
-        Title="MainWindow" Height="1080" Width="1920" MinWidth="1920" MinHeight="1080"
+        Title="MainWindow" Height="1080" Width="1920"
+        WindowState="Maximized"
         UseLayoutRounding="True"
         d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel, IsDesignTimeCreatable=True}">
 
@@ -35,7 +36,7 @@
                         <Components:ImageButton ButtonText="Comptes" ImageSource="/Resources/Icons/account.png" VerticalAlignment="Top" Margin="0,150,0,0" Command="{Binding SaveDataCommand}"/>
                         <Components:ImageButton ButtonText="Épargnes" ImageSource="/Resources/Icons/savings.png" VerticalAlignment="Top" Margin="0,247,0,0"/>
                         -->
-                        <Components:ImageButton ButtonText="Ajout Catégorie" ImageSource="/Resources/Icons/parameters.png" VerticalAlignment="Top" Margin="0,344,0,0" Command="{Binding AddCategoryCommand}"/>
+                        <Components:ImageButton ButtonText="Ajout Catégorie" ImageSource="/Resources/Icons/parameters.png" Margin="0,0,0,0" Command="{Binding AddCategoryCommand}"/>
                     </Grid>
                 </Grid>
             </Border>
