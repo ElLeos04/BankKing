@@ -7,7 +7,7 @@ public class CategoryIO : ICategoryIO
 {
     private const string FOLDER_PATH = "./Data/";
 
-    public List<EntryCategory> GetCategories()
+    public List<EntryCategoryData> GetCategories()
     {
         CheckFolder();
 
@@ -18,10 +18,10 @@ public class CategoryIO : ICategoryIO
             return [];
         }
 
-        XmlSerializer serializer = new(typeof(List<EntryCategory>));
+        XmlSerializer serializer = new(typeof(List<EntryCategoryData>));
 
         using FileStream fileStream = new(files.First(), FileMode.Open);
-        if (serializer.Deserialize(fileStream) is List<EntryCategory> categories)
+        if (serializer.Deserialize(fileStream) is List<EntryCategoryData> categories)
         {
             return categories;
         }
@@ -29,11 +29,11 @@ public class CategoryIO : ICategoryIO
         return [];
     }
 
-    public void SaveCategories(List<EntryCategory> categories)
+    public void SaveCategories(List<EntryCategoryData> categories)
     {
         CheckFolder();
 
-        XmlSerializer serializer = new XmlSerializer(typeof(List<EntryCategory>));
+        XmlSerializer serializer = new XmlSerializer(typeof(List<EntryCategoryData>));
         string filePath = FOLDER_PATH + "Categories.xml";
 
 

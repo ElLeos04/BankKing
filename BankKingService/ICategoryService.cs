@@ -6,11 +6,11 @@ public interface ICategoryService
 {
     void Setup();
 
-    List<EntryCategory> GetAllCategories();
+    List<EntryCategoryData> GetAllCategories();
 
-    List<EntryCategory> GetExpenses();
+    List<EntryCategoryData> GetExpenses();
 
-    List<EntryCategory> GetIncomes();
+    List<EntryCategoryData> GetIncomes();
 
-    void AddCategory(EntryCategory category);
+    void AddCategory(EntryCategoryData category);
 }

@@ -4,7 +4,7 @@ namespace BankKingData;
 
 public interface IAccountIO
 {
-    void SaveAccount(BankAccount account);
+    void SaveAccount(BankAccountData account);
 
-    List<BankAccount> GetAccounts();
+    List<BankAccountData> GetAccounts();
 }

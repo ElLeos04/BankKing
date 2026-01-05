@@ -14,7 +14,7 @@ public class AccountViewModel : BaseViewModel
 {
     private readonly IDialogService _dialogService;
 
-    public BankAccount Account
+    public BankAccountData Account
     {
         get;
         private set;
@@ -49,13 +49,13 @@ public class AccountViewModel : BaseViewModel
     public ICommand AddTransactionCommand => new RelayCommand(AddTransaction);
 
 
-    public AccountViewModel(IDialogService dialog, BankAccount account)
+    public AccountViewModel(IDialogService dialog, BankAccountData account)
     {
         _dialogService = dialog;
         Account = account;
 
         Entries = [];
-        foreach (AccountEntry entry in account.Entries)
+        foreach (AccountEntryData entry in account.Entries)
         {
             Entries.Add(new HistoryEntryViewModel(entry));
         }
@@ -77,7 +77,7 @@ public class AccountViewModel : BaseViewModel
 
         if (result)
         {
-            AccountEntry newEntry = new()
+            AccountEntryData newEntry = new()
             {
                 Amount = addTransactionVM!.Amount,
                 Date = addTransactionVM.Date!.Value,
@@ -91,7 +91,7 @@ public class AccountViewModel : BaseViewModel
         }
     }
 
-    private void ComputeBalanceChange(AccountEntry entry)
+    private void ComputeBalanceChange(AccountEntryData entry)
     {
         Account.Balance += entry.Amount;
 
@@ -99,41 +99,41 @@ public class AccountViewModel : BaseViewModel
         OnPropertyChanged(nameof(BalanceText));
     }
 
-    private static BankAccount MockAccount()
+    private static BankAccountData MockAccount()
     {
-        var account = new BankAccount()
+        var account = new BankAccountData()
         {
             Name = "Compte courant",
             Balance = 1523.45m,
             Entries = []
         };
 
-        AccountEntry e1 = new AccountEntry()
+        AccountEntryData e1 = new AccountEntryData()
         {
             Amount = -50.75m,
             Date = System.DateTime.Today.AddDays(-2),
-            Category = new EntryCategory() { Name = "Nourriture", Type = EntryType.Expense }
+            Category = new EntryCategoryData() { Name = "Nourriture", Type = EntryType.Expense }
         };
 
         account.Entries.Add(e1);
-        account.Entries.Add(new AccountEntry()
+        account.Entries.Add(new AccountEntryData()
         {
             Amount = 2500.00m,
             Date = System.DateTime.Today.AddDays(-2),
-            Category = new EntryCategory() { Name = "Salaire", Type = EntryType.Income }
+            Category = new EntryCategoryData() { Name = "Salaire", Type = EntryType.Income }
         });
 
-        account.Entries.Add(new AccountEntry()
+        account.Entries.Add(new AccountEntryData()
         {
             Amount = -150.00m,
             Date = System.DateTime.Today.AddDays(-1),
-            Category = new EntryCategory() { Name = "Impôts", Type = EntryType.Expense }
+            Category = new EntryCategoryData() { Name = "Impôts", Type = EntryType.Expense }
         });
-        account.Entries.Add(new AccountEntry()
+        account.Entries.Add(new AccountEntryData()
         {
             Amount = -23.40m,
             Date = System.DateTime.Today.AddDays(-7),
-            Category = new EntryCategory() { Name = "Nourriture", Type = EntryType.Expense }
+            Category = new EntryCategoryData() { Name = "Nourriture", Type = EntryType.Expense }
         });
 
 

@@ -7,9 +7,9 @@ public class XMLAccountIO : IAccountIO
 {
     private const string FOLDER_PATH = "./Data/Accounts/";
 
-    public void SaveAccount(BankAccount account)
+    public void SaveAccount(BankAccountData account)
     {
-        XmlSerializer serializer = new XmlSerializer(typeof(BankAccount));
+        XmlSerializer serializer = new XmlSerializer(typeof(BankAccountData));
         string filePath = FOLDER_PATH + account.Name + ".xml";
 
         CheckFolder();
@@ -18,19 +18,19 @@ public class XMLAccountIO : IAccountIO
         serializer.Serialize(fileStream, account);
     }
 
-    public List<BankAccount> GetAccounts()
+    public List<BankAccountData> GetAccounts()
     {
-        List<BankAccount> accounts = [];
+        List<BankAccountData> accounts = [];
 
         CheckFolder();
 
         string[] files = Directory.GetFiles(FOLDER_PATH, "*.xml");
         foreach (string file in files)
         {
-            XmlSerializer serializer = new(typeof(BankAccount));
+            XmlSerializer serializer = new(typeof(BankAccountData));
 
             using FileStream fileStream = new(file, FileMode.Open);
-            if (serializer.Deserialize(fileStream) is BankAccount account)
+            if (serializer.Deserialize(fileStream) is BankAccountData account)
             {
                 accounts.Add(account);
             }

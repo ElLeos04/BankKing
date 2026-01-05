@@ -4,5 +4,5 @@ namespace BankKing.ViewModel.Factory;
 
 public interface IViewModelFactory
 {
-    AccountViewModel CreateAccountViewModel(BankAccount account);
+    AccountViewModel CreateAccountViewModel(BankAccountData account);
 }

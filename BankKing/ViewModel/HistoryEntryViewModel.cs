@@ -7,7 +7,7 @@ namespace BankKing.ViewModel
 {
     public class HistoryEntryViewModel : BaseViewModel
     {
-        private AccountEntry _accountEntry;
+        private AccountEntryData _accountEntry;
 
         public DateTime Date => _accountEntry.Date;
         public string DateText => _accountEntry.Date.ToShortDateString();
@@ -37,13 +37,13 @@ namespace BankKing.ViewModel
         }
 
 
-        public HistoryEntryViewModel(AccountEntry accountEntry)
+        public HistoryEntryViewModel(AccountEntryData accountEntry)
         {
             _accountEntry = accountEntry;
         }
 
         // Mock constructor for design-time data
-        public HistoryEntryViewModel() : this(new AccountEntry() { Category = new() { Name = "Category", Type = EntryType.None }, Amount = 12345, Date = DateTime.Today })
+        public HistoryEntryViewModel() : this(new AccountEntryData() { Category = new() { Name = "Category", Type = EntryType.None }, Amount = 12345, Date = DateTime.Today })
         {
         }
     }

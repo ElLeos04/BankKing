@@ -1,6 +1,6 @@
 ﻿namespace BankKingData.Entry;
 
-public class EntryCategory
+public class EntryCategoryData
 {
     public required string Name { get; set; }
     public EntryType Type { get; set; }

@@ -1,8 +1,8 @@
 ﻿namespace BankKingData.Entry;
 
-public class AccountEntry
+public class AccountEntryData
 {
-    public required EntryCategory Category { get; set; }
+    public required EntryCategoryData Category { get; set; }
     public decimal Amount { get; set; }
     public DateTime Date { get; set; }
 }

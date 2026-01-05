@@ -56,7 +56,7 @@
                                 </ItemsControl.ItemsPanel>
 
                                 <ItemsControl.ItemTemplate>
-                                    <DataTemplate DataType="{x:Type Entry:AccountEntry}">
+                                    <DataTemplate DataType="{x:Type Entry:AccountEntryData}">
                                         <local:HistoryEntry/>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>

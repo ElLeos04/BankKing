@@ -4,7 +4,7 @@ namespace BankKingData;
 
 public  interface ICategoryIO
 {
-    void SaveCategories(List<EntryCategory> categories);
+    void SaveCategories(List<EntryCategoryData> categories);
 
-    List<EntryCategory> GetCategories();
+    List<EntryCategoryData> GetCategories();
 }

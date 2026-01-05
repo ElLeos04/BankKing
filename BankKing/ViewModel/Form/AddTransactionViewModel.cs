@@ -17,8 +17,8 @@ public class AddTransactionViewModel(ICategoryService categoryService) : FormVie
         }
     }
 
-    private EntryCategory? _category;
-    public EntryCategory? Category
+    private EntryCategoryData? _category;
+    public EntryCategoryData? Category
     {
         get => _category;
         set
@@ -28,7 +28,7 @@ public class AddTransactionViewModel(ICategoryService categoryService) : FormVie
         }
     }
 
-    public List<EntryCategory> DisplayedCategories => GetDisplayedCategories();
+    public List<EntryCategoryData> DisplayedCategories => GetDisplayedCategories();
 
 
     private decimal _amount = 0m;
@@ -53,7 +53,7 @@ public class AddTransactionViewModel(ICategoryService categoryService) : FormVie
         }
     }
 
-    private List<EntryCategory> GetDisplayedCategories()
+    private List<EntryCategoryData> GetDisplayedCategories()
     {
         return TransactionType switch
         {

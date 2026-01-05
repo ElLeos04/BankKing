@@ -37,7 +37,7 @@ public class MainWindowViewModel(IAccountService _accountService, IDialogService
 
     private void SaveData(object obj)
     {
-        List<BankAccount> accounts = [];
+        List<BankAccountData> accounts = [];
         foreach (var accountVM in Accounts)
         {
             accounts.Add(accountVM.Account);
@@ -53,7 +53,7 @@ public class MainWindowViewModel(IAccountService _accountService, IDialogService
 
         if (result)
         {
-            BankAccount newAccount = new()
+            BankAccountData newAccount = new()
             {
                 Name = addAccountVM.AccountTitle,
                 Balance = addAccountVM.InitialBalance,
@@ -71,7 +71,7 @@ public class MainWindowViewModel(IAccountService _accountService, IDialogService
         bool result = _dialogService.ShowDialog(addCategoryVM);
         if (result)
         {
-            EntryCategory newCategory = new()
+            EntryCategoryData newCategory = new()
             {
                 Name = addCategoryVM.CategoryName,
                 Type = addCategoryVM.Type

@@ -2,13 +2,13 @@
 
 namespace BankKingData.Account;
 
-public class BankAccount
+public class BankAccountData
 {
     public required string Name { get; set; }
     public decimal Balance { get; set; }
-    public List<AccountEntry> Entries { get; set; }
+    public List<AccountEntryData> Entries { get; set; }
 
-    public BankAccount()
+    public BankAccountData()
     {
         Entries = [];
     }

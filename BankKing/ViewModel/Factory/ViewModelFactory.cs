@@ -6,7 +6,7 @@ namespace BankKing.ViewModel.Factory;
 public class ViewModelFactory(IDialogService dialogService) : IViewModelFactory
 {
 
-    public AccountViewModel CreateAccountViewModel(BankAccount account)
+    public AccountViewModel CreateAccountViewModel(BankAccountData account)
     {
         return new AccountViewModel(dialogService, account);
     }
