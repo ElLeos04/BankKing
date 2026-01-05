@@ -1,7 +1,7 @@
 ﻿using BankKingData;
 using BankKingData.Entry;
 
-namespace BankKingService;
+namespace BankKingService.Impl;
 
 public class CategoryService(ICategoryIO categoryIO) : ICategoryService
 {

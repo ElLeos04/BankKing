@@ -1,7 +1,7 @@
 ﻿using BankKingData;
 using BankKingData.Account;
 
-namespace BankKingService;
+namespace BankKingService.Impl;
 
 public class AccountService(IAccountIO accountIO) : IAccountService
 {
