@@ -1,6 +1,6 @@
 ﻿using BankKing.ViewModel.Form;
 
-namespace BankKing.Services;
+namespace BankKing.ViewModel.Utils;
 
 public interface IDialogService
 {

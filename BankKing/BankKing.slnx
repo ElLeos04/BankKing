@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="../BankKingData/BankKingData.csproj" Id="4c860ef5-833d-4723-b9db-763163fcc218" />
+  <Project Path="../BankKingService/BankKingService.csproj" Id="f1a1d937-e530-407b-8998-6435f4b70aef" />
   <Project Path="BankKing.csproj" />
 </Solution>

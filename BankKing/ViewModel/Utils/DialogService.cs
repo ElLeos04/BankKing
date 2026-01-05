@@ -2,7 +2,7 @@
 using BankKing.ViewModel.Form;
 using System.Windows;
 
-namespace BankKing.Services;
+namespace BankKing.ViewModel.Utils;
 
 public class DialogService : IDialogService
 {

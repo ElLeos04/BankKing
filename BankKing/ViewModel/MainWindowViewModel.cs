@@ -5,7 +5,6 @@ using BankKing.ViewModel.Factory;
 using BankKing.ViewModel.Form;
 using BankKing.ViewModel.Utils;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Windows.Input;
 
 namespace BankKing.ViewModel;
