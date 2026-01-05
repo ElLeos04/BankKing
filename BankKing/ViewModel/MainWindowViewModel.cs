@@ -1,6 +1,6 @@
 ﻿using BankKingData.Account;
 using BankKingData.Entry;
-using BankKing.Services;
+using BankKingService;
 using BankKing.ViewModel.Factory;
 using BankKing.ViewModel.Form;
 using BankKing.ViewModel.Utils;

@@ -1,6 +1,6 @@
 ﻿using BankKingData.Entry;
 
-namespace BankKing.Services;
+namespace BankKingService;
 
 public interface ICategoryService
 {

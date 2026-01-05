@@ -1,5 +1,5 @@
 ﻿using BankKingData.Entry;
-using BankKing.Services;
+using BankKingService;
 
 namespace BankKing.ViewModel.Form;
 

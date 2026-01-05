@@ -20,6 +20,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\BankKingData\BankKingData.csproj" />
+	  <ProjectReference Include="..\BankKingService\BankKingService.csproj" />
 	</ItemGroup>
 
 </Project>

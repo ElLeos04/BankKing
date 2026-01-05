@@ -1,5 +1,4 @@
-﻿using BankKing.Services;
-using BankKingData;
+﻿using BankKingData;
 using BankKingData.Entry;
 
 namespace BankKingService;

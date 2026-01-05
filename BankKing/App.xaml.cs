@@ -25,8 +25,8 @@ namespace BankKing
             services.AddSingleton<BankKingData.ICategoryIO, CategoryIO>();
             services.AddSingleton<BankKingData.IAccountIO, XMLAccountIO>();
 
-            services.AddSingleton<Services.IAccountService, Services.AccountService>();
-            services.AddSingleton<Services.ICategoryService, Services.CategoryService>();
+            services.AddSingleton<BankKingService.IAccountService, BankKingService.AccountService>();
+            services.AddSingleton<BankKingService.ICategoryService, BankKingService.CategoryService>();
             services.AddSingleton<ViewModel.Utils.IDialogService, ViewModel.Utils.DialogService>();
 
             // Register Factory
@@ -49,7 +49,7 @@ namespace BankKing
 
         protected override async void OnStartup(StartupEventArgs e)
         {
-            _serviceProvider.GetService<Services.ICategoryService>()!.Setup();
+            _serviceProvider.GetService<BankKingService.ICategoryService>()!.Setup();
 
             var mainWindow = _serviceProvider.GetService<MainWindow>();
             mainWindow!.DataContext = _serviceProvider.GetService<ViewModel.MainWindowViewModel>();
