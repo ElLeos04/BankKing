@@ -1,6 +1,6 @@
-﻿using BankKing.Data;
-using BankKing.Data.Account;
-using BankKing.Data.Entry;
+﻿using BankKingData;
+using BankKingData.Account;
+using BankKingData.Entry;
 
 namespace BankKing.Services;
 

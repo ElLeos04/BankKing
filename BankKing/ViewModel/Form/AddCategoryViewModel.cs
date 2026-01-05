@@ -1,4 +1,4 @@
-﻿using BankKing.Data.Entry;
+﻿using BankKingData.Entry;
 
 namespace BankKing.ViewModel.Form;
 

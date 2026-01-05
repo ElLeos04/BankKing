@@ -1,4 +1,4 @@
-﻿using BankKing.Data.Account;
+﻿using BankKingData.Account;
 using System.Collections.ObjectModel;
 
 namespace BankKing.Services

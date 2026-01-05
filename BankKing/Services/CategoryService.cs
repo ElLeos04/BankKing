@@ -1,5 +1,5 @@
-﻿using BankKing.Data;
-using BankKing.Data.Entry;
+﻿using BankKingData;
+using BankKingData.Entry;
 using System.Linq;
 
 namespace BankKing.Services;

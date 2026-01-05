@@ -24,7 +24,7 @@ namespace BankKing
             services.AddSingleton<Services.IAccountService, Services.AccountService>();
             services.AddSingleton<Services.IDialogService, Services.DialogService>();
             services.AddSingleton<Services.ICategoryService, Services.CategoryService>();
-            services.AddSingleton<Data.ICategoryIO, Data.CategoryIO>();
+            services.AddSingleton<BankKingData.ICategoryIO, BankKingData.CategoryIO>();
 
             // Register Factory
             services.AddSingleton<ViewModel.Factory.IViewModelFactory, ViewModel.Factory.ViewModelFactory>();

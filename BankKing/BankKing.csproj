@@ -18,5 +18,8 @@
 	  <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
 	  <PackageReference Include="System.Linq" Version="4.3.0" />
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\BankKingData\BankKingData.csproj" />
+	</ItemGroup>
 
 </Project>

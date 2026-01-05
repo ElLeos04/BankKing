@@ -1,4 +1,4 @@
-﻿using BankKing.Data.Account;
+﻿using BankKingData.Account;
 using BankKing.Services;
 
 namespace BankKing.ViewModel.Factory;

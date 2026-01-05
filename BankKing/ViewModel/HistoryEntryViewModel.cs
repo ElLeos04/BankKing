@@ -1,4 +1,4 @@
-﻿using BankKing.Data.Entry;
+﻿using BankKingData.Entry;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
