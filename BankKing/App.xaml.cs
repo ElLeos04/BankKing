@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using BankKingData.Impl;
+using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Markup;
@@ -24,7 +25,8 @@ namespace BankKing
             services.AddSingleton<Services.IAccountService, Services.AccountService>();
             services.AddSingleton<Services.IDialogService, Services.DialogService>();
             services.AddSingleton<Services.ICategoryService, Services.CategoryService>();
-            services.AddSingleton<BankKingData.ICategoryIO, BankKingData.CategoryIO>();
+            services.AddSingleton<BankKingData.ICategoryIO, CategoryIO>();
+            services.AddSingleton<BankKingData.IAccountIO, XMLAccountIO>();
 
             // Register Factory
             services.AddSingleton<ViewModel.Factory.IViewModelFactory, ViewModel.Factory.ViewModelFactory>();

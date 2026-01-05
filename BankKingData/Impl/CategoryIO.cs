@@ -1,7 +1,7 @@
 ﻿using BankKingData.Entry;
 using System.Xml.Serialization;
 
-namespace BankKingData;
+namespace BankKingData.Impl;
 
 public class CategoryIO : ICategoryIO
 {

@@ -1,7 +1,7 @@
 ﻿using BankKingData.Account;
 using System.Xml.Serialization;
 
-namespace BankKingData;
+namespace BankKingData.Impl;
 
 public class XMLAccountIO : IAccountIO
 {

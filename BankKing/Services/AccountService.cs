@@ -4,21 +4,13 @@ using BankKingData.Entry;
 
 namespace BankKing.Services;
 
-public class AccountService : IAccountService
+public class AccountService(IAccountIO accountIO) : IAccountService
 {
-    private readonly IAccountIO _accountIO;
-
-    public AccountService()
-    {
-        _accountIO = new XMLAccountIO();
-    }
-
-
     public async void SaveAccounts(List<BankAccount> accounts)
     {
         foreach (BankAccount account in accounts)
         {
-            _accountIO.SaveAccount(account);
+            accountIO.SaveAccount(account);
         }
     }
 
@@ -31,6 +23,6 @@ public class AccountService : IAccountService
 
     public List<BankAccount> GetAccounts()
     {
-        return _accountIO.GetAccounts();
+        return accountIO.GetAccounts();
     }
 }
