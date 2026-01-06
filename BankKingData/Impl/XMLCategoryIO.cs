@@ -1,5 +1,4 @@
 ﻿using BankKingData.Entry;
-using System.Xml.Serialization;
 
 namespace BankKingData.Impl;
 
