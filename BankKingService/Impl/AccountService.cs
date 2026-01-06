@@ -1,27 +1,30 @@
 ﻿using BankKingData;
 using BankKingData.Account;
+using BankKingService.Converter;
+using BankKingService.Data;
 
 namespace BankKingService.Impl;
 
-public class AccountService(IAccountIO accountIO) : IAccountService
+public class AccountService(IAccountIO accountIO, IBankAccountConverter accountConverter) : IAccountService
 {
-    public async void SaveAccounts(List<BankAccountData> accounts)
+    public async void SaveAccounts(List<BankAccountBO> accounts)
     {
-        foreach (BankAccountData account in accounts)
+        List<BankAccountData> accountsData = accountConverter.BOListToDataList(accounts);
+
+        foreach (BankAccountData account in accountsData)
         {
             accountIO.SaveAccount(account);
         }
     }
 
-    public async void RenameAccount(BankAccountData account, string newName)
+    public async void RenameAccount(BankAccountBO account, string newName)
     {
-        // In a real application, this method would update data in a database
-        await Task.Delay(500); // Simulate async work
-        account.Name = newName;
+        throw new NotImplementedException();
     }
 
-    public List<BankAccountData> GetAccounts()
+    public List<BankAccountBO> GetAccounts()
     {
-        return accountIO.GetAccounts();
+        List<BankAccountData> accountsData = accountIO.GetAccounts();
+        return accountConverter.DataListToBOList(accountsData);
     }
 }

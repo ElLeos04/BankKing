@@ -1,10 +1,12 @@
-﻿using BankKingData.Account;
+﻿using BankKingService.Data;
 
 namespace BankKingService;
 
 public interface IAccountService
 {
-    List<BankAccountData> GetAccounts();
-    void RenameAccount(BankAccountData account, string newName);
-    void SaveAccounts(List<BankAccountData> accounts);
+    List<BankAccountBO> GetAccounts();
+
+    void RenameAccount(BankAccountBO account, string newName);
+
+    void SaveAccounts(List<BankAccountBO> accounts);
 }
