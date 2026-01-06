@@ -33,6 +33,8 @@ namespace BankKing
 
             // Register Converters
             services.AddSingleton<BankKingService.Converter.IEntryCategoryConverter, BankKingService.Converter.Impl.EntryCategoryConverter>();
+            services.AddSingleton<BankKingService.Converter.IAccountEntryConverter, BankKingService.Converter.Impl.AccountEntryConverter>();
+            services.AddSingleton<BankKingService.Converter.IBankAccountConverter, BankKingService.Converter.Impl.BankAccountConverter>();
 
             // Register ViewModel
             services.AddTransient<ViewModel.MainWindowViewModel>();
