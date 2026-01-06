@@ -1,17 +1,18 @@
 ﻿using BankKingData;
 using BankKingData.Entry;
+using BankKingService.Converter;
 using BankKingService.Data;
 
 namespace BankKingService.Impl;
 
-public class CategoryService(ICategoryIO categoryIO) : ICategoryService
+public class CategoryService(ICategoryIO categoryIO, IEntryCategoryConverter categoryConverter) : ICategoryService
 {
     private List<EntryCategoryBO> _categories = [];
 
     public void Setup()
     {
         List<EntryCategoryData> categoriesData = categoryIO.GetCategories();
-
+        _categories = categoryConverter.DataListToBOList(categoriesData);
     }
 
     public List<EntryCategoryBO> GetAllCategories()
@@ -41,6 +42,7 @@ public class CategoryService(ICategoryIO categoryIO) : ICategoryService
     {
         _categories.Add(category);
 
-        categoryIO.SaveCategories(_categories);
+        List<EntryCategoryData> categoriesData = categoryConverter.BOListToDataList(_categories);
+        categoryIO.SaveCategories(categoriesData);
     }
 }

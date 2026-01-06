@@ -31,6 +31,9 @@ namespace BankKing
             // Register Factory
             services.AddSingleton<ViewModel.Factory.IViewModelFactory, ViewModel.Factory.ViewModelFactory>();
 
+            // Register Converters
+            services.AddSingleton<BankKingService.Converter.IEntryCategoryConverter, BankKingService.Converter.Impl.EntryCategoryConverter>();
+
             // Register ViewModel
             services.AddTransient<ViewModel.MainWindowViewModel>();
             services.AddTransient<ViewModel.Form.AddTransactionViewModel>();

@@ -1,4 +1,4 @@
-﻿using BankKingData.Entry;
+﻿using BankKingService.Data;
 
 namespace BankKingService;
 
@@ -6,11 +6,11 @@ public interface ICategoryService
 {
     void Setup();
 
-    List<EntryCategoryData> GetAllCategories();
+    List<EntryCategoryBO> GetAllCategories();
 
-    List<EntryCategoryData> GetExpenses();
+    List<EntryCategoryBO> GetExpenses();
 
-    List<EntryCategoryData> GetIncomes();
+    List<EntryCategoryBO> GetIncomes();
 
-    void AddCategory(EntryCategoryData category);
+    void AddCategory(EntryCategoryBO category);
 }
