@@ -1,23 +1,25 @@
 ﻿using BankKingData;
 using BankKingData.Entry;
+using BankKingService.Data;
 
 namespace BankKingService.Impl;
 
 public class CategoryService(ICategoryIO categoryIO) : ICategoryService
 {
-    private List<EntryCategoryData> _categories = [];
+    private List<EntryCategoryBO> _categories = [];
 
     public void Setup()
     {
-        _categories = categoryIO.GetCategories();
+        List<EntryCategoryData> categoriesData = categoryIO.GetCategories();
+
     }
 
-    public List<EntryCategoryData> GetAllCategories()
+    public List<EntryCategoryBO> GetAllCategories()
     {
         return _categories;
     }
 
-    public List<EntryCategoryData> GetExpenses()
+    public List<EntryCategoryBO> GetExpenses()
     {
         var expenses = from category in _categories
                        where category.Type == EntryType.Expense || category.Type == EntryType.ExpenseAndIncome
@@ -26,7 +28,7 @@ public class CategoryService(ICategoryIO categoryIO) : ICategoryService
         return [.. expenses];
     }
 
-    public List<EntryCategoryData> GetIncomes()
+    public List<EntryCategoryBO> GetIncomes()
     {
         var incomes = from category in _categories
                       where category.Type == EntryType.Income || category.Type == EntryType.ExpenseAndIncome
@@ -35,7 +37,7 @@ public class CategoryService(ICategoryIO categoryIO) : ICategoryService
         return [.. incomes];
     }
 
-    public void AddCategory(EntryCategoryData category)
+    public void AddCategory(EntryCategoryBO category)
     {
         _categories.Add(category);
 
