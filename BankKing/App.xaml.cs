@@ -21,7 +21,7 @@ namespace BankKing
             ServiceCollection services = new();
 
             // Register Services
-            services.AddSingleton<BankKingData.ICategoryIO, BankKingData.Impl.CategoryIO>();
+            services.AddSingleton<BankKingData.ICategoryIO, BankKingData.Impl.XMLCategoryIO>();
             services.AddSingleton<BankKingData.IAccountIO, BankKingData.Impl.XMLAccountIO>();
 
             services.AddSingleton<BankKingService.IAccountService, BankKingService.Impl.AccountService>();

@@ -1,21 +1,17 @@
 ﻿using BankKingData.Account;
-using System.Xml.Serialization;
 
 namespace BankKingData.Impl;
 
-public class XMLAccountIO : IAccountIO
+public class XMLAccountIO : AXmlSerializer<BankAccountData>, IAccountIO
 {
     private const string FOLDER_PATH = "./Data/Accounts/";
 
+    public XMLAccountIO() : base(FOLDER_PATH) { }
+
     public void SaveAccount(BankAccountData account)
     {
-        XmlSerializer serializer = new XmlSerializer(typeof(BankAccountData));
-        string filePath = FOLDER_PATH + account.Name + ".xml";
-
-        CheckFolder();
-
-        using FileStream fileStream = new FileStream(filePath, FileMode.Create);
-        serializer.Serialize(fileStream, account);
+        string fileName = account.Name + ".xml";
+        Serialize(fileName, account);
     }
 
     public List<BankAccountData> GetAccounts()
@@ -27,14 +23,7 @@ public class XMLAccountIO : IAccountIO
         string[] files = Directory.GetFiles(FOLDER_PATH, "*.xml");
         foreach (string file in files)
         {
-            XmlSerializer serializer = new(typeof(BankAccountData));
-
-            using FileStream fileStream = new(file, FileMode.Open);
-            if (serializer.Deserialize(fileStream) is BankAccountData account)
-            {
-                accounts.Add(account);
-            }
-
+            accounts.Add(Deserialize(file));
         }
 
         return accounts;
