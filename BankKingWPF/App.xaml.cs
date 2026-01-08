@@ -29,7 +29,7 @@ namespace BankKing
             services.AddSingleton<ViewModel.Utils.IDialogService, ViewModel.Utils.DialogService>();
 
             // Register Factory
-            services.AddSingleton<ViewModel.Factory.IViewModelFactory, ViewModel.Factory.ViewModelFactory>();
+            services.AddSingleton<BankKingViewModel.Factory.IViewModelFactory, BankKingViewModel.Factory.Impl.ViewModelFactory>();
 
             // Register Converters
             services.AddSingleton<BankKingService.Converter.IEntryCategoryConverter, BankKingService.Converter.Impl.EntryCategoryConverter>();
@@ -37,8 +37,8 @@ namespace BankKing
             services.AddSingleton<BankKingService.Converter.IBankAccountConverter, BankKingService.Converter.Impl.BankAccountConverter>();
 
             // Register ViewModel
-            services.AddTransient<ViewModel.MainWindowViewModel>();
-            services.AddTransient<ViewModel.Form.AddTransactionViewModel>();
+            services.AddTransient<BankKingViewModel.MainWindowViewModel>();
+            services.AddTransient<BankKingViewModel.Form.AddTransactionViewModel>();
 
             // Register Window
             services.AddSingleton<MainWindow>();
