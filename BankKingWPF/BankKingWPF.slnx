@@ -2,6 +2,5 @@
   <Project Path="../BankKingData/BankKingData.csproj" Id="4c860ef5-833d-4723-b9db-763163fcc218" />
   <Project Path="../BankKingService/BankKingService.csproj" Id="f1a1d937-e530-407b-8998-6435f4b70aef" />
   <Project Path="../BankKingViewModel/BankKingViewModel.csproj" Id="7a63af50-4a87-4c60-b60c-98bc89ac31ae" />
-  <Project Path="../BankKingWpfUI/BankKingWpfUI.csproj" Id="344e032c-91c5-4548-aa53-1e6373c5883f" />
-  <Project Path="BankKing.csproj" />
+  <Project Path="BankKingWPF.csproj" />
 </Solution>
