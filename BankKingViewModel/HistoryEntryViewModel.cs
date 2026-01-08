@@ -1,8 +1,9 @@
 ﻿using BankKingData.Entry;
+using BankKingService.Data;
 
 namespace BankKingViewModel
 {
-    public class HistoryEntryViewModel(AccountEntryData _accountEntry) : BaseViewModel
+    public class HistoryEntryViewModel(AccountEntryBO _accountEntry) : BaseViewModel
     {
 
         public DateTime Date => _accountEntry.Date;
@@ -16,7 +17,7 @@ namespace BankKingViewModel
         public bool IsPositive => _accountEntry.Amount >= 0;
 
         // Mock constructor for design-time data
-        public HistoryEntryViewModel() : this(new AccountEntryData() { Category = new() { Name = "Category", Type = EntryType.None }, Amount = 12345, Date = DateTime.Today })
+        public HistoryEntryViewModel() : this(new AccountEntryBO() { Category = new() { Name = "Category", Type = EntryType.None }, Amount = 12345, Date = DateTime.Today })
         {
         }
     }
