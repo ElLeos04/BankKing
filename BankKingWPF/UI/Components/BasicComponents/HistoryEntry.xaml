@@ -14,8 +14,18 @@
                        Text="{Binding CategoryName}">
             </TextBlock>
             <GridSplitter HorizontalAlignment="Center" Width="2" Background="{DynamicResource LightAccentBrush}"/>
-            <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,15,0" TextAlignment="Right" Foreground="{Binding AmountColor}"
+            <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,15,0" TextAlignment="Right"
                        Text="{Binding AmountText}">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{StaticResource NegativeValueBrush}" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsPositive}" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource PositiveValueBrush}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
             </TextBlock>
         </Grid>
     </Border>
