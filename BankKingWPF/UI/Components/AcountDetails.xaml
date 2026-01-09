@@ -44,22 +44,37 @@
                                 <VisualBrush Visual="{Binding ElementName=mask}"/>
                             </ScrollViewer.OpacityMask>
 
-                            <ItemsControl ItemsSource="{Binding GroupedEntries}">
-                                <ItemsControl.GroupStyle>
-                                    <GroupStyle ContainerStyle="{StaticResource HistoryHeader}"/>
-                                </ItemsControl.GroupStyle>
-
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel/>
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
+                            <ItemsControl ItemsSource="{Binding Entries}">
 
                                 <ItemsControl.ItemTemplate>
-                                    <DataTemplate DataType="{x:Type Entry:AccountEntryData}">
-                                        <local:HistoryEntry/>
+                                    <DataTemplate>
+
+                                        <Expander Style="{StaticResource NoButtonExpanderStyle}"
+                                            Header="{Binding}" IsExpanded="True" Margin="-1,0,-1,0">
+
+                                            <Expander.HeaderTemplate>
+                                                <DataTemplate>
+                                                    <!-- This control receives the GroupedEntry -->
+                                                    <local:HistoryHeader/>
+                                                </DataTemplate>
+                                            </Expander.HeaderTemplate>
+
+                                            <Expander.Content>
+                                                <ItemsControl ItemsSource="{Binding}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <local:HistoryEntry/>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </Expander.Content>
+
+
+                                        </Expander>
+
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
+
                             </ItemsControl>
                         </ScrollViewer>
                     </Grid>

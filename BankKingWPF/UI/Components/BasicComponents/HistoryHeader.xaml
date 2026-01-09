@@ -8,6 +8,6 @@
              d:Width="278" Height="34">
     <Border Style="{StaticResource HistoryItemBorder}">
         <TextBlock FontFamily="{StaticResource AppFontFamily}" Foreground="{StaticResource DarkAccentBrush}" FontSize="16"
-                   Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                   Text="{Binding Key}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Border>
 </UserControl>

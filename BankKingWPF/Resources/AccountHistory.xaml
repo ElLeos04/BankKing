@@ -47,29 +47,4 @@
         </Setter>
     </Style>
 
-    <Style x:Key="HistoryHeader" TargetType="{x:Type GroupItem}">
-        <Setter Property="Margin" Value="0,0,0,0"/>
-
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type GroupItem}">
-
-                    <Expander IsExpanded="True" Margin="0,0,0,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Style="{StaticResource NoButtonExpanderStyle}">
-
-                        <!-- Use your Custom Header UserControl -->
-                        <Expander.Header>
-                            <components:HistoryHeader/>
-                        </Expander.Header>
-
-                        <Expander.Content>
-                            <ItemsPresenter />
-                        </Expander.Content>
-
-                    </Expander>
-
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
 </ResourceDictionary>
