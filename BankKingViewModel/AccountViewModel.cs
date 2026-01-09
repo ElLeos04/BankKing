@@ -101,8 +101,9 @@ public class AccountViewModel : BaseViewModel
     private void RefreshEntries()
     {
         var groups = rawEntries
-        .GroupBy(x => x.DateText)
+        .GroupBy(x => x.Date)
         .Select(g => new GroupedEntry<HistoryEntryViewModel>(g.Key, g))
+        .OrderByDescending(g => g.Key)
         .ToList();
 
         Entries = new(groups);

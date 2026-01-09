@@ -6,7 +6,7 @@ namespace BankKingViewModel
     public class HistoryEntryViewModel(AccountEntryBO _accountEntry) : BaseViewModel
     {
 
-        public DateTime Date => _accountEntry.Date;
+        public DateTime Date => _accountEntry.Date.Date;
         public string DateText => _accountEntry.Date.ToShortDateString();
 
 
