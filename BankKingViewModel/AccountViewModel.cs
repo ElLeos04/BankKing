@@ -86,6 +86,7 @@ public class AccountViewModel : BaseViewModel
             rawEntries.Add(new HistoryEntryViewModel(newEntry));
 
             ComputeBalanceChange(newEntry);
+            RefreshEntries();
         }
     }
 
