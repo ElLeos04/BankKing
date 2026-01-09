@@ -1,0 +1,17 @@
+﻿<UserControl x:Name="control" x:Class="BankKingWPF.UI.Components.ImageButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BankKingWPF.UI.Components"
+             mc:Ignorable="d" Width="200" Height="82.5">
+
+    <Button Style="{StaticResource SideBarButtonStyle}" Command="{Binding Command, ElementName=control}">
+        <Grid Margin="0">
+            <Image Source="{Binding ImageSource, ElementName=control}" Width="50" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                           RenderOptions.BitmapScalingMode="HighQuality"/>
+            <TextBlock x:Name="ButtonTextBlock" TextWrapping="Wrap" TextAlignment="Center" Foreground="{DynamicResource DarkAccentBrush}"
+                        Text="{Binding ButtonText ,ElementName=control}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="80,0,0,0" FontSize="25"/>
+        </Grid>
+    </Button>
+</UserControl>

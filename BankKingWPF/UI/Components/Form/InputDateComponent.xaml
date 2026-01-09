@@ -1,0 +1,20 @@
+﻿<local:InputComponent
+    x:Name="component"
+    x:Class="BankKingWPF.UI.Components.Form.InputDateComponent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:BankKingWPF.UI.Components.Form"
+    mc:Ignorable="d" 
+    Height="60" Width="285">
+
+    <Grid d:Background="SkyBlue">
+        <TextBlock FontFamily="{StaticResource AppFontFamily}" Foreground="{DynamicResource DarkAccentBrush}" Text="{Binding InputName, ElementName=component}" 
+            Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+        <DatePicker Style="{StaticResource DateInput}" Margin="10,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    SelectedDate="{Binding InputDate, ElementName=component, UpdateSourceTrigger=PropertyChanged}"/>
+
+    </Grid>
+</local:InputComponent>
