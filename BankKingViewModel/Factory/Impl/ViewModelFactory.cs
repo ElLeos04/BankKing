@@ -10,7 +10,7 @@ public class ViewModelFactory(IDialogService dialogService, ICategoryService cat
 
     public AccountViewModel CreateAccountViewModel(BankAccountBO account)
     {
-        return new AccountViewModel(dialogService, account);
+        return new AccountViewModel(dialogService, this, account);
     }
 
     public AddTransactionViewModel CreateTransactionViewModel()
