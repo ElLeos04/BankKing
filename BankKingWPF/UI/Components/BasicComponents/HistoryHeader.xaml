@@ -4,10 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BankKingWPF.UI.Components"
+             xmlns:utils="clr-namespace:BankKingWPF.UI.Utils"
              mc:Ignorable="d" 
              d:Width="278" Height="34">
+
+    <UserControl.Resources>
+        <utils:DateToShortDateConverter x:Key="DateConverter"/>
+    </UserControl.Resources>
+
     <Border Style="{StaticResource HistoryItemBorder}">
         <TextBlock FontFamily="{StaticResource AppFontFamily}" Foreground="{StaticResource DarkAccentBrush}" FontSize="16"
-                   Text="{Binding Key}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                   Text="{Binding Key, Converter={StaticResource DateConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Border>
 </UserControl>
