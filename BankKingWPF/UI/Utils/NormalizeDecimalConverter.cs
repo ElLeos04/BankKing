@@ -5,21 +5,21 @@ namespace BankKingWPF.UI.Utils;
 
 public class NormalizeDecimalConverter : IValueConverter
 {
-    // VM -> View (Displaying the number)
+    // VM -> View
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         return value;
     }
 
-    // View -> VM (User typed something, now saving to property)
+    // View -> VM
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        string input = value as string;
+        string? input = value as string;
 
         if (string.IsNullOrEmpty(input))
-            return 0m;
+            return Binding.DoNothing;
 
-        if (input.EndsWith(".") || input.EndsWith(","))
+        if (input.EndsWith('.') || input.EndsWith(','))
         {
             return Binding.DoNothing;
         }
