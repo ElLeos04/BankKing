@@ -48,6 +48,10 @@ public class AccountViewModel : BaseViewModel
 
     public ICommand AddTransactionCommand => new RelayCommand(AddTransaction);
 
+    public ICommand ModifyAccountCommand => new RelayCommand(ModifyAccount);
+
+    public ICommand RemoveAccountCommand => new RelayCommand(RemoveAccount);
+
 
     public AccountViewModel(IDialogService dialogService, IViewModelFactory viewModelFactory, BankAccountBO account)
     {
@@ -90,10 +94,19 @@ public class AccountViewModel : BaseViewModel
         }
     }
 
+    private void ModifyAccount(object param)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void RemoveAccount(object param)
+    {
+        throw new NotImplementedException();
+    }
+
     private void ComputeBalanceChange(AccountEntryBO entry)
     {
         Account.Balance += entry.Amount;
-
 
         OnPropertyChanged(nameof(BalanceText));
     }

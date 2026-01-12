@@ -70,4 +70,10 @@
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Tag" Value="12"/>
     </Style>
+
+    <!-- Expander: Radius 0, -->
+    <Style x:Key="ExpanderButton" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource PanelBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LightAccentBrush}"/>
+    </Style>
 </ResourceDictionary>
