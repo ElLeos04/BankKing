@@ -47,7 +47,7 @@
         </Setter>
     </Style>
 
-    <!-- Rounded Button: Radius 6, Light Theme -->
+    <!-- Rounded Button: Radius 6 -->
     <Style x:Key="RoundedButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
         <Setter Property="Background" Value="{StaticResource LightTouchBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource LightAccentBrush}"/>
@@ -55,14 +55,14 @@
         <Setter Property="Tag" Value="6"/>
     </Style>
 
-    <!-- Sidebar: Radius 6 (Inherited), Dark Theme, Stretch Both -->
+    <!-- Sidebar: Radius 6 (Inherited), Stretch Both -->
     <Style x:Key="SideBarButtonStyle" TargetType="Button" BasedOn="{StaticResource RoundedButtonStyle}">
         <Setter Property="Background" Value="{StaticResource DarkPanelBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource DarkAccentBrush}"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
     </Style>
 
-    <!-- Add Account: Radius 12, Dark Theme, Stretch Vertical -->
+    <!-- Add Account: Radius 12, Stretch Vertical -->
     <Style x:Key="AddAccountButton" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
         <Setter Property="Background" Value="{StaticResource DarkPanelBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource DarkPanelBrush}"/>
