@@ -1,4 +1,5 @@
 ﻿using BankKingData.Entry;
+using BankKingService;
 using BankKingService.Data;
 using BankKingViewModel.Factory;
 using BankKingViewModel.Form;
@@ -13,6 +14,8 @@ public class AccountViewModel : BaseViewModel
     private readonly IDialogService _dialogService;
 
     private readonly IViewModelFactory _viewModelFactory;
+
+    private readonly IAccountService _accountService;
 
     public BankAccountBO Account
     {
@@ -53,10 +56,11 @@ public class AccountViewModel : BaseViewModel
     public ICommand RemoveAccountCommand => new RelayCommand(RemoveAccount);
 
 
-    public AccountViewModel(IDialogService dialogService, IViewModelFactory viewModelFactory, BankAccountBO account)
+    public AccountViewModel(IDialogService dialogService, IViewModelFactory viewModelFactory, IAccountService accountService, BankAccountBO account)
     {
         _dialogService = dialogService;
         _viewModelFactory = viewModelFactory;
+        _accountService = accountService;
         Account = account;
 
         Entries = [];
@@ -70,7 +74,7 @@ public class AccountViewModel : BaseViewModel
     }
 
     // Mock constructor for design-time data
-    public AccountViewModel() : this(null, null, MockAccount()) { }
+    public AccountViewModel() : this(null, null,null, MockAccount()) { }
 
     private void AddTransaction(object param)
     {
@@ -96,7 +100,26 @@ public class AccountViewModel : BaseViewModel
 
     private void ModifyAccount(object param)
     {
-        throw new NotImplementedException();
+        AddAccountViewModel modifyAccountVM = new()
+        {
+            AccountTitle = Account.Name,
+            InitialBalance = Account.Balance
+        };
+        bool result = _dialogService.ShowDialog(modifyAccountVM!);
+
+        if (result)
+        {
+            if (modifyAccountVM!.AccountTitle != Account.Name)
+            {
+                _accountService.RenameAccount(Account, modifyAccountVM.AccountTitle);
+            }
+
+            Account.Name = modifyAccountVM!.AccountTitle;
+            Account.Balance = modifyAccountVM.InitialBalance;
+
+            OnPropertyChanged(nameof(Name));
+            OnPropertyChanged(nameof(BalanceText));
+        }
     }
 
     private void RemoveAccount(object param)
