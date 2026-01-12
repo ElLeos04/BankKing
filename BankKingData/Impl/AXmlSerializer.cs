@@ -42,8 +42,32 @@ public abstract class AXmlSerializer<T> : IDataIO<T>
         }
     }
 
+    /* IDataIO<T> implementation */
     public abstract T Get();
     public abstract void Save(T data);
     public abstract void Rename(T data, string newName);
     public abstract void Delete(T data);
+
+    /* IDataIO implementation */
+    object IDataIO.Get()
+    {
+        return Get()!;
+    }
+
+    public void Save(object data)
+    {
+        Save((T) data);
+    }
+
+    public void Rename(object data, string newName)
+    {
+        Rename((T) data, newName);
+    }
+
+    public void Delete(object data)
+    {
+        Delete((T) data);
+    }
+
+
 }
