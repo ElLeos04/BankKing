@@ -1,19 +1,8 @@
 ﻿namespace BankKingData;
 
-public interface IDataIO
+public interface IDataIO<T>
 {
-    object Get();
-
-    void Save(object data);
-
-    void Rename(object data, string newName);
-
-    void Delete(object data);
-}
-
-public interface IDataIO<T> : IDataIO
-{
-    new T Get();
+    T Get();
 
     void Save(T data);
 
