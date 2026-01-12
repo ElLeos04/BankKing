@@ -23,8 +23,8 @@ public partial class App : Application
         ServiceCollection services = new();
 
         // Register Services
-        services.AddSingleton<BankKingData.ICategoryIO, BankKingData.Impl.XMLCategoryIO>();
-        services.AddSingleton<BankKingData.IAccountIO, BankKingData.Impl.XMLAccountIO>();
+        services.AddKeyedSingleton<BankKingData.IDataIO, BankKingData.Impl.XMLAccountIO>("BankAccount");
+        services.AddKeyedSingleton<BankKingData.IDataIO, BankKingData.Impl.XMLCategoryIO>("Category");
 
         services.AddSingleton<BankKingService.IAccountService, BankKingService.Impl.AccountService>();
         services.AddSingleton<BankKingService.ICategoryService, BankKingService.Impl.CategoryService>();
