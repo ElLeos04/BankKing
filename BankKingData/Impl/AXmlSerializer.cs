@@ -34,7 +34,7 @@ public abstract class AXmlSerializer<T>
         return default!;
     }
 
-    private void CheckFolder()
+    protected void CheckFolder()
     {
         if (!Directory.Exists(folderPath))
         {

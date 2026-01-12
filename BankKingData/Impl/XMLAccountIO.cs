@@ -28,12 +28,4 @@ public class XMLAccountIO : AXmlSerializer<BankAccountData>, IAccountIO
 
         return accounts;
     }
-
-    private static void CheckFolder()
-    {
-        if (!Directory.Exists(FOLDER_PATH))
-        {
-            Directory.CreateDirectory(FOLDER_PATH);
-        }
-    }
 }
