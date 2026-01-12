@@ -2,7 +2,7 @@
 
 namespace BankKingData.Impl;
 
-public abstract class AXmlSerializer<T>
+public abstract class AXmlSerializer<T> : IDataIO<T>
 {
     private readonly string folderPath;
 
@@ -41,4 +41,9 @@ public abstract class AXmlSerializer<T>
             Directory.CreateDirectory(folderPath);
         }
     }
+
+    public abstract T Get();
+    public abstract void Save(T data);
+    public abstract void Rename(T data, string newName);
+    public abstract void Delete(T data);
 }

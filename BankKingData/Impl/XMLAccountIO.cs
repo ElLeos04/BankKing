@@ -36,4 +36,24 @@ public class XMLAccountIO : AXmlSerializer<BankAccountData>, IAccountIO
             Directory.CreateDirectory(FOLDER_PATH);
         }
     }
+
+    public override BankAccountData Get()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Save(BankAccountData data)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Rename(BankAccountData data, string newName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Delete(BankAccountData data)
+    {
+        throw new NotImplementedException();
+    }
 }

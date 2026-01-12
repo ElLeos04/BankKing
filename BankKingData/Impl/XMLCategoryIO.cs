@@ -37,4 +37,24 @@ public class XMLCategoryIO : AXmlSerializer<List<EntryCategoryData>>, ICategoryI
             Directory.CreateDirectory(FOLDER_PATH);
         }
     }
+
+    public override List<EntryCategoryData> Get()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Save(List<EntryCategoryData> data)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Rename(List<EntryCategoryData> data, string newName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Delete(List<EntryCategoryData> data)
+    {
+        throw new NotImplementedException();
+    }
 }
