@@ -7,4 +7,8 @@ public interface IAccountIO
     void SaveAccount(BankAccountData account);
 
     List<BankAccountData> GetAccounts();
+
+    void RenameAccount(string oldName, string newName);
+
+    void DeleteAccount(string accountName);
 }

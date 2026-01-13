@@ -12,6 +12,30 @@
     <Border BorderThickness="0" Background="{DynamicResource DarkPanelBrush}" CornerRadius="12">
         <Grid>
             <Grid x:Name="HeaderPanel" Height="280" VerticalAlignment="Top">
+                <Expander Style="{StaticResource NoButtonExpanderStyle}" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="100" Panel.ZIndex="1">
+                    <Expander.Header>
+                        <Image Width="15" Source="/Resources/Icons/parameters.png" HorizontalAlignment="Right"/>
+                    </Expander.Header>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Button Style="{StaticResource ExpanderButton}" Command="{Binding ModifyAccountCommand}">
+                            <TextBlock Text="Modifier le compte" FontFamily="{DynamicResource AppFontFamily}" FontSize="14" 
+                                       Foreground="{DynamicResource DarkAccentBrush}" TextAlignment="Center" TextWrapping="Wrap"/>
+                        </Button>
+                        <Button Style="{StaticResource ExpanderButton}" Command="{Binding RemoveAccountCommand}" Grid.Row="1">
+                            <TextBlock Text="Supprimer le compte" FontFamily="{DynamicResource AppFontFamily}" 
+                                       FontSize="14" Foreground="{DynamicResource DarkAccentBrush}" TextAlignment="Center" TextWrapping="Wrap"/>
+                            </Button>
+                    </Grid>
+
+
+                </Expander>
+
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,33,0,0"
                            TextWrapping="Wrap" TextAlignment="Center"
                            FontFamily="{DynamicResource AppFontFamily}" FontSize="32" Foreground="{DynamicResource DarkAccentBrush}"
@@ -19,6 +43,7 @@
 
                 <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="{DynamicResource AppFontFamily}" FontSize="32" Foreground="{DynamicResource DarkAccentBrush}" Margin="0,100,0,0"
                            Text="{Binding BalanceText}"/>
+
 
                 <!-- TODO: Réactiver et faire fonctionner le résumé du mois
                 <Grid Height="60" VerticalAlignment="Bottom" Margin="0,0,0,40">

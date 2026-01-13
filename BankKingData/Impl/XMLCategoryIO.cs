@@ -29,12 +29,4 @@ public class XMLCategoryIO : AXmlSerializer<List<EntryCategoryData>>, ICategoryI
 
         return Deserialize(files.First());
     }
-
-    private static void CheckFolder()
-    {
-        if (!Directory.Exists(FOLDER_PATH))
-        {
-            Directory.CreateDirectory(FOLDER_PATH);
-        }
-    }
 }

@@ -29,11 +29,19 @@ public class XMLAccountIO : AXmlSerializer<BankAccountData>, IAccountIO
         return accounts;
     }
 
-    private static void CheckFolder()
+    public void RenameAccount(string oldName, string newName)
     {
-        if (!Directory.Exists(FOLDER_PATH))
-        {
-            Directory.CreateDirectory(FOLDER_PATH);
-        }
+        string oldPath = FOLDER_PATH + oldName + ".xml";
+        string newPath = FOLDER_PATH + newName + ".xml";
+
+        if (Directory.Exists(oldPath))
+            Directory.Move(oldPath, newPath);
+    }
+
+    public void DeleteAccount(string accountName)
+    {
+        string filePath = FOLDER_PATH + accountName + ".xml";
+        if (File.Exists(filePath))
+            File.Delete(filePath);
     }
 }

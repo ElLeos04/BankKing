@@ -1,9 +1,11 @@
 ﻿using BankKingData.Entry;
+using BankKingService;
 using BankKingService.Data;
 using BankKingViewModel.Factory;
 using BankKingViewModel.Form;
 using BankKingViewModel.Utils;
 using System.Collections.ObjectModel;
+using System.Security.Principal;
 using System.Windows.Input;
 
 namespace BankKingViewModel;
@@ -13,6 +15,10 @@ public class AccountViewModel : BaseViewModel
     private readonly IDialogService _dialogService;
 
     private readonly IViewModelFactory _viewModelFactory;
+
+    private readonly IAccountService _accountService;
+
+    private readonly Action<AccountViewModel> _onAccountRemoved;
 
     public BankAccountBO Account
     {
@@ -42,31 +48,34 @@ public class AccountViewModel : BaseViewModel
 
     public string BalanceText => Balance.ToString("C2");
 
-    private readonly List<HistoryEntryViewModel> rawEntries;
+    private readonly List<HistoryEntryViewModel> rawEntries = [];
 
-    public ObservableCollection<GroupedEntry<HistoryEntryViewModel>> Entries { get; private set; }
+    public ObservableCollection<GroupedEntry<HistoryEntryViewModel>> Entries { get; private set; } = [];
 
     public ICommand AddTransactionCommand => new RelayCommand(AddTransaction);
 
+    public ICommand ModifyAccountCommand => new RelayCommand(ModifyAccount);
 
-    public AccountViewModel(IDialogService dialogService, IViewModelFactory viewModelFactory, BankAccountBO account)
+    public ICommand RemoveAccountCommand => new RelayCommand(RemoveAccount);
+
+
+    public AccountViewModel(IDialogService dialogService, IViewModelFactory viewModelFactory, IAccountService accountService, BankAccountBO account, Action<AccountViewModel> onAccountRemoved)
     {
         _dialogService = dialogService;
         _viewModelFactory = viewModelFactory;
+        _accountService = accountService;
+        _onAccountRemoved = onAccountRemoved;
         Account = account;
 
-        Entries = [];
-        rawEntries = [];
-        foreach (AccountEntryBO entry in account.Entries)
-        {
-            rawEntries.Add(new HistoryEntryViewModel(entry));
-        }
-
-        RefreshEntries();
+        InitializeEntries();
     }
 
     // Mock constructor for design-time data
-    public AccountViewModel() : this(null, null, MockAccount()) { }
+    public AccountViewModel()
+    {
+        Account = MockAccount();
+        InitializeEntries();
+    }
 
     private void AddTransaction(object param)
     {
@@ -90,12 +99,61 @@ public class AccountViewModel : BaseViewModel
         }
     }
 
+    private void ModifyAccount(object param)
+    {
+        AddAccountViewModel modifyAccountVM = new()
+        {
+            AccountTitle = Account.Name,
+            InitialBalance = Account.Balance
+        };
+        bool result = _dialogService.ShowDialog(modifyAccountVM!);
+
+        if (result)
+        {
+            if (modifyAccountVM!.AccountTitle != Account.Name)
+            {
+                _accountService.RenameAccount(Account, modifyAccountVM.AccountTitle);
+            }
+
+            Account.Name = modifyAccountVM!.AccountTitle;
+            Account.Balance = modifyAccountVM.InitialBalance;
+
+            OnPropertyChanged(nameof(Name));
+            OnPropertyChanged(nameof(BalanceText));
+        }
+    }
+
+    private void RemoveAccount(object param)
+    {
+        string prompt = "Vous allez supprimer le compte. Êtes-vous sûr ?";
+
+        ConfirmationFormViewModel confirmationVM = new()
+        {
+            Message = prompt
+        };
+
+        if (_dialogService.ShowDialog(confirmationVM))
+        {
+            _onAccountRemoved.Invoke(this);
+            _accountService.DeleteAccount(Account);
+        }
+    }
+
     private void ComputeBalanceChange(AccountEntryBO entry)
     {
         Account.Balance += entry.Amount;
 
-
         OnPropertyChanged(nameof(BalanceText));
+    }
+
+    private void InitializeEntries()
+    {
+        foreach (AccountEntryBO entry in Account.Entries)
+        {
+            rawEntries.Add(new HistoryEntryViewModel(entry));
+        }
+
+        RefreshEntries();
     }
 
     private void RefreshEntries()

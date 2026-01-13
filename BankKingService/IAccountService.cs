@@ -9,4 +9,6 @@ public interface IAccountService
     void RenameAccount(BankAccountBO account, string newName);
 
     void SaveAccounts(List<BankAccountBO> accounts);
+
+    void DeleteAccount(BankAccountBO account);
 }
