@@ -4,9 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BankKingWPF.UI.Components.Form"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:viewmodel="clr-namespace:BankKingViewModel.Form;assembly=BankKingViewModel"
+             mc:Ignorable="d"
+             Height="142"             
+             Style="{StaticResource AddForm}"
+             d:DataContext="{d:DesignInstance Type=viewmodel:ConfirmationFormViewModel, IsDesignTimeCreatable=True}">
     <Grid>
-            
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Message}"
+                   FontFamily="{StaticResource AppFontFamily}" FontSize="23"
+                   Foreground="{StaticResource DarkAccentBrush}"/>
     </Grid>
 </UserControl>
