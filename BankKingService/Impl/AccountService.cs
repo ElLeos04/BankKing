@@ -7,7 +7,7 @@ namespace BankKingService.Impl;
 
 public class AccountService(IAccountIO accountIO, IBankAccountConverter accountConverter) : IAccountService
 {
-    public async void SaveAccounts(List<BankAccountBO> accounts)
+    public void SaveAccounts(List<BankAccountBO> accounts)
     {
         List<BankAccountData> accountsData = accountConverter.BOListToDataList(accounts);
 
@@ -17,7 +17,7 @@ public class AccountService(IAccountIO accountIO, IBankAccountConverter accountC
         }
     }
 
-    public async void RenameAccount(BankAccountBO account, string newName)
+    public void RenameAccount(BankAccountBO account, string newName)
     {
         accountIO.RenameAccount(account.Name, newName);
     }
@@ -26,5 +26,10 @@ public class AccountService(IAccountIO accountIO, IBankAccountConverter accountC
     {
         List<BankAccountData> accountsData = accountIO.GetAccounts();
         return accountConverter.DataListToBOList(accountsData);
+    }
+
+    public void DeleteAccount(BankAccountBO account)
+    {
+        accountIO.DeleteAccount(account.Name);
     }
 }

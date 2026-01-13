@@ -37,4 +37,11 @@ public class XMLAccountIO : AXmlSerializer<BankAccountData>, IAccountIO
         if (Directory.Exists(oldPath))
             Directory.Move(oldPath, newPath);
     }
+
+    public void DeleteAccount(string accountName)
+    {
+        string filePath = FOLDER_PATH + accountName + ".xml";
+        if (File.Exists(filePath))
+            File.Delete(filePath);
+    }
 }

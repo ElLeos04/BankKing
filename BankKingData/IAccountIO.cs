@@ -9,4 +9,6 @@ public interface IAccountIO
     List<BankAccountData> GetAccounts();
 
     void RenameAccount(string oldName, string newName);
+
+    void DeleteAccount(string accountName);
 }
