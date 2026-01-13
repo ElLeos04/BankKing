@@ -124,7 +124,7 @@ public class AccountViewModel : BaseViewModel
 
     private void RemoveAccount(object param)
     {
-        throw new NotImplementedException();
+        _accountService.DeleteAccount(Account);
     }
 
     private void ComputeBalanceChange(AccountEntryBO entry)
