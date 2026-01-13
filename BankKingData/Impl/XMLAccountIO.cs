@@ -34,6 +34,7 @@ public class XMLAccountIO : AXmlSerializer<BankAccountData>, IAccountIO
         string oldPath = FOLDER_PATH + oldName + ".xml";
         string newPath = FOLDER_PATH + newName + ".xml";
 
-        Directory.Move(oldPath, newPath);
+        if (Directory.Exists(oldPath))
+            Directory.Move(oldPath, newPath);
     }
 }
