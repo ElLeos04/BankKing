@@ -5,6 +5,7 @@ using BankKingViewModel.Factory;
 using BankKingViewModel.Form;
 using BankKingViewModel.Utils;
 using System.Collections.ObjectModel;
+using System.Security.Principal;
 using System.Windows.Input;
 
 namespace BankKingViewModel;
@@ -16,6 +17,8 @@ public class AccountViewModel : BaseViewModel
     private readonly IViewModelFactory _viewModelFactory;
 
     private readonly IAccountService _accountService;
+
+    private readonly Action<AccountViewModel> _onAccountRemoved;
 
     public BankAccountBO Account
     {
@@ -45,9 +48,9 @@ public class AccountViewModel : BaseViewModel
 
     public string BalanceText => Balance.ToString("C2");
 
-    private readonly List<HistoryEntryViewModel> rawEntries;
+    private readonly List<HistoryEntryViewModel> rawEntries = [];
 
-    public ObservableCollection<GroupedEntry<HistoryEntryViewModel>> Entries { get; private set; }
+    public ObservableCollection<GroupedEntry<HistoryEntryViewModel>> Entries { get; private set; } = [];
 
     public ICommand AddTransactionCommand => new RelayCommand(AddTransaction);
 
@@ -56,25 +59,23 @@ public class AccountViewModel : BaseViewModel
     public ICommand RemoveAccountCommand => new RelayCommand(RemoveAccount);
 
 
-    public AccountViewModel(IDialogService dialogService, IViewModelFactory viewModelFactory, IAccountService accountService, BankAccountBO account)
+    public AccountViewModel(IDialogService dialogService, IViewModelFactory viewModelFactory, IAccountService accountService, BankAccountBO account, Action<AccountViewModel> onAccountRemoved)
     {
         _dialogService = dialogService;
         _viewModelFactory = viewModelFactory;
         _accountService = accountService;
+        _onAccountRemoved = onAccountRemoved;
         Account = account;
 
-        Entries = [];
-        rawEntries = [];
-        foreach (AccountEntryBO entry in account.Entries)
-        {
-            rawEntries.Add(new HistoryEntryViewModel(entry));
-        }
-
-        RefreshEntries();
+        InitializeEntries();
     }
 
     // Mock constructor for design-time data
-    public AccountViewModel() : this(null, null, null, MockAccount()) { }
+    public AccountViewModel()
+    {
+        Account = MockAccount();
+        InitializeEntries();
+    }
 
     private void AddTransaction(object param)
     {
@@ -133,7 +134,7 @@ public class AccountViewModel : BaseViewModel
 
         if (_dialogService.ShowDialog(confirmationVM))
         {
-            // TODO : Callback à suppression du compte
+            _onAccountRemoved.Invoke(this);
             _accountService.DeleteAccount(Account);
         }
     }
@@ -143,6 +144,16 @@ public class AccountViewModel : BaseViewModel
         Account.Balance += entry.Amount;
 
         OnPropertyChanged(nameof(BalanceText));
+    }
+
+    private void InitializeEntries()
+    {
+        foreach (AccountEntryBO entry in Account.Entries)
+        {
+            rawEntries.Add(new HistoryEntryViewModel(entry));
+        }
+
+        RefreshEntries();
     }
 
     private void RefreshEntries()

@@ -30,7 +30,7 @@ public class MainWindowViewModel(IAccountService _accountService, IDialogService
 
         foreach (var account in accounts)
         {
-            Accounts.Add(_vmFactory.CreateAccountViewModel(account));
+            Accounts.Add(_vmFactory.CreateAccountViewModel(account, (vm) => Accounts.Remove(vm)));
         }
     }
 
@@ -59,7 +59,7 @@ public class MainWindowViewModel(IAccountService _accountService, IDialogService
                 Entries = []
             };
 
-            Accounts.Add(_vmFactory.CreateAccountViewModel(newAccount));
+            Accounts.Add(_vmFactory.CreateAccountViewModel(newAccount, (vm) => Accounts.Remove(vm)));
             OnPropertyChanged(nameof(Accounts));
         }
     }
