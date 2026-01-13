@@ -19,7 +19,7 @@ public class AccountService(IAccountIO accountIO, IBankAccountConverter accountC
 
     public async void RenameAccount(BankAccountBO account, string newName)
     {
-        throw new NotImplementedException();
+        accountIO.RenameAccount(account.Name, newName);
     }
 
     public List<BankAccountBO> GetAccounts()

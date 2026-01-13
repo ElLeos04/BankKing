@@ -28,4 +28,12 @@ public class XMLAccountIO : AXmlSerializer<BankAccountData>, IAccountIO
 
         return accounts;
     }
+
+    public void RenameAccount(string oldName, string newName)
+    {
+        string oldPath = FOLDER_PATH + oldName + ".xml";
+        string newPath = FOLDER_PATH + newName + ".xml";
+
+        Directory.Move(oldPath, newPath);
+    }
 }
