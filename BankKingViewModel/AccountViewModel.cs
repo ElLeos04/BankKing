@@ -74,7 +74,7 @@ public class AccountViewModel : BaseViewModel
     }
 
     // Mock constructor for design-time data
-    public AccountViewModel() : this(null, null,null, MockAccount()) { }
+    public AccountViewModel() : this(null, null, null, MockAccount()) { }
 
     private void AddTransaction(object param)
     {
@@ -124,7 +124,18 @@ public class AccountViewModel : BaseViewModel
 
     private void RemoveAccount(object param)
     {
-        _accountService.DeleteAccount(Account);
+        string prompt = "Vous allez supprimer le compte. Êtes-vous sûr ?";
+
+        ConfirmationFormViewModel confirmationVM = new()
+        {
+            Message = prompt
+        };
+
+        if (_dialogService.ShowDialog(confirmationVM))
+        {
+            // TODO : Callback à suppression du compte
+            _accountService.DeleteAccount(Account);
+        }
     }
 
     private void ComputeBalanceChange(AccountEntryBO entry)
