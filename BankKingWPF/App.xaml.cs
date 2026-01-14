@@ -19,7 +19,6 @@ public partial class App : Application
 
     public App()
     {
-        Trace.WriteLine("Application Constructor");
         ServiceCollection services = new();
 
         // Register Services
@@ -55,15 +54,11 @@ public partial class App : Application
 
     protected override async void OnStartup(StartupEventArgs e)
     {
-        Trace.WriteLine("Application Starting");
-
         _serviceProvider.GetService<BankKingService.ICategoryService>()!.Setup();
 
         var mainWindow = _serviceProvider.GetService<UI.MainWindow>();
         mainWindow!.DataContext = _serviceProvider.GetService<BankKingViewModel.MainWindowViewModel>();
         mainWindow!.Show();
-
-        Trace.WriteLine("Application Started");
 
         base.OnStartup(e);
     }
