@@ -17,5 +17,10 @@
     <SolidColorBrush x:Key="PositiveValueBrush" Color="{StaticResource PositiveValue}"/>
     <SolidColorBrush x:Key="NegativeValueBrush" Color="{StaticResource NegativeValue}"/>
 
+    <Color x:Key="PanelHoverColor">#C7C9BA</Color>
+
+    <SolidColorBrush x:Key="PanelHoverBrush" Color="{StaticResource PanelHoverColor}"/>
+
+
     <FontFamily x:Key="AppFontFamily">./#Inter</FontFamily>
 </ResourceDictionary>
