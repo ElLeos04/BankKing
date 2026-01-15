@@ -14,6 +14,13 @@ public interface IDialogService
     /// <param name="viewAspect">The object view aspect linked</param>
     /// <returns>true if the dialog was accepted by the user; otherwise, false.</returns>
     bool ShowDialog(object viewAspect);
+
+    /// <summary>
+    /// Triggers the display of a delete confirmation dialog for the specified view aspect.
+    /// </summary>
+    /// <param name="viewAspect"></param>
+    /// <returns></returns>
+    bool ShowDialogWithDelete(object viewAspect);
 }
 
 
@@ -24,6 +31,5 @@ public interface IDialogService
 /// <typeparam name="TView">Type of the view used by the platform</typeparam>
 public interface IDialogService<TView> : IDialogService
 {
-    // The specific method from your original question
     bool ShowDialog(TView view);
 }

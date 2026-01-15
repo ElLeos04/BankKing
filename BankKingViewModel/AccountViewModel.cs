@@ -5,7 +5,6 @@ using BankKingViewModel.Factory;
 using BankKingViewModel.Form;
 using BankKingViewModel.Utils;
 using System.Collections.ObjectModel;
-using System.Security.Principal;
 using System.Windows.Input;
 
 namespace BankKingViewModel;
@@ -80,6 +79,7 @@ public class AccountViewModel : BaseViewModel
     private void AddTransaction(object param)
     {
         AddTransactionViewModel addTransactionVM = _viewModelFactory.CreateTransactionViewModel();
+
         bool result = _dialogService.ShowDialog(addTransactionVM!);
 
         if (result)
@@ -92,7 +92,8 @@ public class AccountViewModel : BaseViewModel
             };
 
             Account.Entries.Add(newEntry);
-            rawEntries.Add(new HistoryEntryViewModel(newEntry));
+            HistoryEntryViewModel historyEntryVM = _viewModelFactory.CreateHistoryEntryViewModel(newEntry, DeleteEntry);
+            rawEntries.Add(historyEntryVM);
 
             ComputeBalanceChange(newEntry);
             RefreshEntries();
@@ -150,7 +151,7 @@ public class AccountViewModel : BaseViewModel
     {
         foreach (AccountEntryBO entry in Account.Entries)
         {
-            rawEntries.Add(new HistoryEntryViewModel(entry));
+            rawEntries.Add(_viewModelFactory.CreateHistoryEntryViewModel(entry, DeleteEntry));
         }
 
         RefreshEntries();
@@ -167,6 +168,24 @@ public class AccountViewModel : BaseViewModel
         Entries = new(groups);
 
         OnPropertyChanged(nameof(Entries));
+    }
+
+    private void DeleteEntry(HistoryEntryViewModel entryVM)
+    {
+        ConfirmationFormViewModel confirmationVM = new()
+        {
+            Message = "Vous allez supprimer cette entrée. Êtes-vous sûr ?"
+        };
+
+        if (_dialogService.ShowDialog(confirmationVM))
+        {
+            Account.Entries.Remove(entryVM.AccountEntry);
+            rawEntries.Remove(entryVM);
+
+            Account.Balance -= entryVM.AccountEntry.Amount;
+            OnPropertyChanged(nameof(BalanceText));
+            RefreshEntries();
+        }
     }
 
     private static BankAccountBO MockAccount()
