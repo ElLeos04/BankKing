@@ -13,6 +13,11 @@ public class ViewModelFactory(IDialogService dialogService, ICategoryService cat
         return new AccountViewModel(dialogService, this, accountService, account, action);
     }
 
+    public HistoryEntryViewModel CreateHistoryEntryViewModel(AccountEntryBO entry, Action<HistoryEntryViewModel> action)
+    {
+        return new(entry, this, dialogService, action);
+    }
+
     public AddTransactionViewModel CreateTransactionViewModel()
     {
         return new AddTransactionViewModel(categoryService);
