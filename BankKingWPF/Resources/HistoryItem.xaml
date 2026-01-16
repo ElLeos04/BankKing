@@ -6,7 +6,6 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="HistoryItemBorder" TargetType="Border">
-        <Setter Property="Background" Value="{StaticResource PanelBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource LightAccentBrush}"/>
         <Setter Property="BorderThickness" Value="0,0,0,2"/>
     </Style>

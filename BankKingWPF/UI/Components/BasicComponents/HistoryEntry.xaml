@@ -8,6 +8,23 @@
              mc:Ignorable="d"
              d:Width="278" Height="34"
              d:DataContext="{d:DesignInstance Type=vm:HistoryEntryViewModel, IsDesignTimeCreatable=True}">
+
+    <UserControl.InputBindings>
+        <MouseBinding MouseAction="LeftClick" 
+                      Command="{Binding OnClickCommand}" />
+    </UserControl.InputBindings>
+
+    <UserControl.Style>
+        <Style TargetType="UserControl">
+            <Setter Property="Background" Value="{StaticResource PanelBrush}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource PanelHoverBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+
     <Border Style="{StaticResource HistoryItemBorder}">
         <Grid>
             <TextBlock HorizontalAlignment="Left" Margin="15,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" FontFamily="{DynamicResource AppFontFamily}" FontSize="14" Foreground="{DynamicResource DarkAccentBrush}"

@@ -19,10 +19,12 @@
     <DataTemplate DataType="{x:Type vm:AddCategoryViewModel}">
         <form:AddCategoryForm />
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type vm:ConfirmationFormViewModel}">
         <form:ConfirmationForm />
     </DataTemplate>
+
+    <BooleanToVisibilityConverter x:Key="BoolToVis" />
 
     <Style x:Key="AddForm" TargetType="UserControl">
         <Setter Property="Width" Value="600"/>
@@ -50,6 +52,16 @@
                                             Command="{Binding CancelCommand}">
                                         <TextBlock Text="Annuler" TextAlignment="Center" VerticalAlignment="Center"
                                                    Foreground="{StaticResource DarkAccentBrush}" FontFamily="{StaticResource AppFontFamily}"/>
+                                    </Button>
+
+                                    <Button Style="{StaticResource RoundedButtonStyle}" Margin="20,0,0,0"
+                                            Width="120" Height="22" VerticalAlignment="Bottom"
+                                            Command="{Binding DeleteCommand}"
+                                            Visibility="{Binding DataContext.FormCanDelete,
+                                                RelativeSource={RelativeSource TemplatedParent}, 
+                                                Converter={StaticResource BoolToVis}}">
+                                        <TextBlock Text="Supprimer" TextAlignment="Center" VerticalAlignment="Center"
+                                            Foreground="{StaticResource DarkAccentBrush}" FontFamily="{StaticResource AppFontFamily}"/>
                                     </Button>
 
                                 </StackPanel>

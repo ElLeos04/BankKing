@@ -32,4 +32,15 @@ public class WPFDialogService : IDialogService<FormViewModel>
 
         throw new ArgumentException("Unsupported view aspect type", nameof(viewAspect));
     }
+
+    public bool ShowDialogWithDelete(object viewAspect)
+    {
+        if (viewAspect is FormViewModel formViewModel)
+        {
+            formViewModel.FormCanDelete = true;
+            return ShowDialog(formViewModel);
+        }
+
+        throw new ArgumentException("Unsupported view aspect type", nameof(viewAspect));
+    }
 }
