@@ -91,11 +91,13 @@ namespace BankKingViewModel
 
             if (_dialogService.ShowDialogWithDelete(addTransactionViewModel))
             {
-                _onEntryModified.Invoke(this, addTransactionViewModel.Amount);
+                decimal oldAmount = _accountEntry.Amount;
 
                 Amount = addTransactionViewModel.Amount;
                 Date = addTransactionViewModel.Date ?? DateTime.Today;
                 Category = addTransactionViewModel.Category;
+
+                _onEntryModified.Invoke(this, oldAmount);
             }
             else if (addTransactionViewModel.DeleteTriggered)
             {

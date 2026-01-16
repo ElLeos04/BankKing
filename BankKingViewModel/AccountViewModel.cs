@@ -189,9 +189,9 @@ public class AccountViewModel : BaseViewModel
     }
 
     // TODO : Callback à la modif d'une entrée pour Update Labels (et referesh ordre de la liste)
-    private void OnEntryModified(HistoryEntryViewModel entryVM, decimal newAmount)
+    private void OnEntryModified(HistoryEntryViewModel entryVM, decimal oldAmount)
     {
-        decimal amountDiff = newAmount - entryVM.AccountEntry.Amount;
+        decimal amountDiff = entryVM.AccountEntry.Amount - oldAmount;
         Account.Balance += amountDiff;
         OnPropertyChanged(nameof(BalanceText));
         RefreshEntries();
