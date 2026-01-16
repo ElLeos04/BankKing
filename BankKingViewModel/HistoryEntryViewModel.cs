@@ -14,6 +14,7 @@ namespace BankKingViewModel
         private readonly IViewModelFactory _viewModelFactory;
 
         private readonly Action<HistoryEntryViewModel> _onEntryRemove;
+        private readonly Action<HistoryEntryViewModel, decimal> _onEntryModified;
 
         private AccountEntryBO _accountEntry;
         public AccountEntryBO AccountEntry
@@ -64,12 +65,14 @@ namespace BankKingViewModel
 
         public ICommand OnClickCommand => new RelayCommand(OnClick, null);
 
-        public HistoryEntryViewModel(AccountEntryBO accountEntry, IViewModelFactory viewModelFactory, IDialogService dialogService, Action<HistoryEntryViewModel> onEntryRemove)
+        public HistoryEntryViewModel(AccountEntryBO accountEntry, IViewModelFactory viewModelFactory, IDialogService dialogService,
+            Action<HistoryEntryViewModel> onEntryRemove, Action<HistoryEntryViewModel, decimal> onEntryModified)
         {
             _accountEntry = accountEntry;
             _viewModelFactory = viewModelFactory;
             _dialogService = dialogService;
             _onEntryRemove = onEntryRemove;
+            _onEntryModified = onEntryModified;
         }
 
         // Mock constructor for design-time data
@@ -88,6 +91,8 @@ namespace BankKingViewModel
 
             if (_dialogService.ShowDialogWithDelete(addTransactionViewModel))
             {
+                _onEntryModified.Invoke(this, addTransactionViewModel.Amount);
+
                 Amount = addTransactionViewModel.Amount;
                 Date = addTransactionViewModel.Date ?? DateTime.Today;
                 Category = addTransactionViewModel.Category;

@@ -92,7 +92,7 @@ public class AccountViewModel : BaseViewModel
             };
 
             Account.Entries.Add(newEntry);
-            HistoryEntryViewModel historyEntryVM = _viewModelFactory.CreateHistoryEntryViewModel(newEntry, DeleteEntry);
+            HistoryEntryViewModel historyEntryVM = _viewModelFactory.CreateHistoryEntryViewModel(newEntry, DeleteEntry, OnEntryModified);
             rawEntries.Add(historyEntryVM);
 
             ComputeBalanceChange(newEntry);
@@ -151,7 +151,7 @@ public class AccountViewModel : BaseViewModel
     {
         foreach (AccountEntryBO entry in Account.Entries)
         {
-            rawEntries.Add(_viewModelFactory.CreateHistoryEntryViewModel(entry, DeleteEntry));
+            rawEntries.Add(_viewModelFactory.CreateHistoryEntryViewModel(entry, DeleteEntry, OnEntryModified));
         }
 
         RefreshEntries();
@@ -186,6 +186,15 @@ public class AccountViewModel : BaseViewModel
             OnPropertyChanged(nameof(BalanceText));
             RefreshEntries();
         }
+    }
+
+    // TODO : Callback à la modif d'une entrée pour Update Labels (et referesh ordre de la liste)
+    private void OnEntryModified(HistoryEntryViewModel entryVM, decimal newAmount)
+    {
+        decimal amountDiff = newAmount - entryVM.AccountEntry.Amount;
+        Account.Balance += amountDiff;
+        OnPropertyChanged(nameof(BalanceText));
+        RefreshEntries();
     }
 
     private static BankAccountBO MockAccount()
