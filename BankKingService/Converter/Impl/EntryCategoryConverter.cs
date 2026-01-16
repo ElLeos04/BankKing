@@ -15,6 +15,7 @@ public class EntryCategoryConverter : IEntryCategoryConverter
     {
         return new EntryCategoryData
         {
+            CategoryId = bo.Id,
             Name = bo.Name,
             Type = bo.Type
         };
@@ -29,6 +30,7 @@ public class EntryCategoryConverter : IEntryCategoryConverter
     {
         return new EntryCategoryBO
         {
+            Id = data.CategoryId,
             Name = data.Name,
             Type = data.Type
         };

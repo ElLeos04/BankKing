@@ -3,7 +3,7 @@ using BankKingService.Data;
 
 namespace BankKingService.Converter.Impl;
 
-public class AccountEntryConverter : IAccountEntryConverter
+public class AccountEntryConverter(ICategoryService _categoryService) : IAccountEntryConverter
 {
     public List<AccountEntryData> BOListToDataList(List<AccountEntryBO> boList)
     {
@@ -14,11 +14,7 @@ public class AccountEntryConverter : IAccountEntryConverter
     {
         return new AccountEntryData
         {
-            Category = new EntryCategoryData
-            {
-                Name = bo.Category.Name,
-                Type = bo.Category.Type
-            },
+            CategoryId = bo.Category.Id,
             Amount = bo.Amount,
             Date = bo.Date
         };
@@ -31,13 +27,11 @@ public class AccountEntryConverter : IAccountEntryConverter
 
     public AccountEntryBO DataToBO(AccountEntryData data)
     {
+        EntryCategoryBO category = _categoryService.GetCategory(data.CategoryId);
+
         return new AccountEntryBO
         {
-            Category = new EntryCategoryBO
-            {
-                Name = data.Category.Name,
-                Type = data.Category.Type
-            },
+            Category = category,
             Amount = data.Amount,
             Date = data.Date
         };

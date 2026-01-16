@@ -13,4 +13,6 @@ public interface ICategoryService
     List<EntryCategoryBO> GetIncomes();
 
     void AddCategory(EntryCategoryBO category);
+
+    EntryCategoryBO GetCategory(int id);
 }
