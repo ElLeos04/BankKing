@@ -45,4 +45,9 @@ public class CategoryService(ICategoryIO categoryIO, IEntryCategoryConverter cat
         List<EntryCategoryData> categoriesData = categoryConverter.BOListToDataList(_categories);
         categoryIO.SaveCategories(categoriesData);
     }
+
+    public EntryCategoryBO GetCategory(int id)
+    {
+        return _categories.First(category => category.Id == id);
+    }
 }
