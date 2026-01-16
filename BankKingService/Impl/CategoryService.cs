@@ -9,10 +9,13 @@ public class CategoryService(ICategoryIO categoryIO, IEntryCategoryConverter cat
 {
     private List<EntryCategoryBO> _categories = [];
 
+    private int nextId;
+
     public void Setup()
     {
         List<EntryCategoryData> categoriesData = categoryIO.GetCategories();
         _categories = categoryConverter.DataListToBOList(categoriesData);
+        nextId = _categories.Count > 0 ? _categories.Max(category => category.Id) + 1 : 1;
     }
 
     public List<EntryCategoryBO> GetAllCategories()
@@ -41,6 +44,8 @@ public class CategoryService(ICategoryIO categoryIO, IEntryCategoryConverter cat
     public void AddCategory(EntryCategoryBO category)
     {
         _categories.Add(category);
+        category.Id = nextId;
+        nextId++;
 
         List<EntryCategoryData> categoriesData = categoryConverter.BOListToDataList(_categories);
         categoryIO.SaveCategories(categoriesData);

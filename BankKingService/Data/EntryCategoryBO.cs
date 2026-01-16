@@ -4,7 +4,7 @@ namespace BankKingService.Data;
 
 public class EntryCategoryBO
 {
-    public required int Id { get; set; }
+    public int Id { get; set; }
     public required string Name { get; set; }
     public EntryType Type { get; set; }
 
