@@ -2,15 +2,25 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net10.0-windows</TargetFramework>
+		<TargetFramework>net10.0-windows10.0.26100.1</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
+		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<PublishSingleFile>true</PublishSingleFile>
+		<SelfContained>true</SelfContained>
+		<StartupObject>BankKingWPF.App</StartupObject>
+		<ApplicationIcon>Resources\Icons\moneyIcon.ico</ApplicationIcon>
+		<RepositoryUrl>https://github.com/ElLeos04/BankKing</RepositoryUrl>
+		<Title>BankKing</Title>
+		<Authors>Léo Puyastier</Authors>
 	</PropertyGroup>
 	<ItemGroup>
 		<Content Include="Resources/Inter.ttf">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+		<Content Include="Resources\Icons\moneyIcon.ico" />
 		<Resource Include="Resources\Icons\**\*.*" />
 	</ItemGroup>
 	<ItemGroup>
